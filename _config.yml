@@ -1,10 +1,10 @@
 # Site settings
-title: "[YOUR NAME] - Portfolio"
+title: "Firecracker280 - Portfolio"
 description: "Personal portfolio website showcasing projects, writings, and journal entries"
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/Isamu"  # Subpath of your site (matches repo name)
+url: "https://firecracker280.github.io"  # GitHub Pages domain
 email: your-email@example.com
-github_username: yourusername
+github_username: firecracker280
 linkedin_username: yourusername
 twitter_username: yourusername
 
@@ -12,22 +12,21 @@ twitter_username: yourusername
 markdown: kramdown
 highlighter: rouge
 permalink: /:collection/:title/
-include: ['_pages']
 exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'node_modules', 'vendor']
 
 # Collections
 collections:
   projects:
     output: true
-    permalink: /:collection/:title/
+    permalink: /projects/:title/
   writings:
     output: true
-    permalink: /:collection/:title/
+    permalink: /writings/:title/
   journal:
     output: true
-    permalink: /:collection/:title/
+    permalink: /journal/:title/
 
-# Defaults (front matter)
+# Defaults (Front Matter)
 defaults:
   - scope:
       path: ""
@@ -63,10 +62,9 @@ defaults:
     values:
       layout: "default"
 
-# Plugins
+# Plugins (Only GitHub Pages Supported Plugins)
 plugins:
   - jekyll-paginate
-  - jekyll-archives
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
@@ -75,37 +73,19 @@ plugins:
 paginate: 10
 paginate_path: "/page:num/"
 
-# Archives
-jekyll-archives:
-  enabled:
-    - year
-    - month
-    - categories
-    - tags
-  layouts:
-    year: archive-year
-    month: archive-month
-    category: archive-category
-    tag: archive-tag
-  permalinks:
-    year: '/archives/:year/'
-    month: '/archives/:year/:month/'
-    category: '/categories/:name/'
-    tag: '/tags/:name/'
-
-# Sass
+# Sass (CSS Preprocessing)
 sass:
   sass_dir: _sass
   style: compressed
 
-# SEO
+# SEO Settings
 twitter:
   username: yourusername
   card: summary_large_image
 logo: "/assets/images/logo.png"
 social:
-  name: "[YOUR NAME]"
+  name: "Firecracker280"
   links:
     - https://twitter.com/yourusername
     - https://www.linkedin.com/in/yourusername
-    - https://github.com/yourusername
+    - https://github.com/firecracker280
