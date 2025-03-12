@@ -1,0 +1,111 @@
+# Site settings
+title: "[YOUR NAME] - Portfolio"
+description: "Personal portfolio website showcasing projects, writings, and journal entries"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+email: your-email@example.com
+github_username: yourusername
+linkedin_username: yourusername
+twitter_username: yourusername
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:collection/:title/
+include: ['_pages']
+exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'node_modules', 'vendor']
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:title/
+  writings:
+    output: true
+    permalink: /:collection/:title/
+  journal:
+    output: true
+    permalink: /:collection/:title/
+
+# Defaults (front matter)
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+      comments: false
+      share: true
+      related: true
+  - scope:
+      path: ""
+      type: "writings"
+    values:
+      layout: "post"
+      comments: true
+      share: true
+      related: true
+  - scope:
+      path: ""
+      type: "journal"
+    values:
+      layout: "journal"
+      comments: false
+      share: false
+      related: false
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-archives
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Pagination
+paginate: 10
+paginate_path: "/page:num/"
+
+# Archives
+jekyll-archives:
+  enabled:
+    - year
+    - month
+    - categories
+    - tags
+  layouts:
+    year: archive-year
+    month: archive-month
+    category: archive-category
+    tag: archive-tag
+  permalinks:
+    year: '/archives/:year/'
+    month: '/archives/:year/:month/'
+    category: '/categories/:name/'
+    tag: '/tags/:name/'
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# SEO
+twitter:
+  username: yourusername
+  card: summary_large_image
+logo: "/assets/images/logo.png"
+social:
+  name: "[YOUR NAME]"
+  links:
+    - https://twitter.com/yourusername
+    - https://www.linkedin.com/in/yourusername
+    - https://github.com/yourusername
