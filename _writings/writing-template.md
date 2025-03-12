@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Title of Your Writing"
-date: YYYY-MM-DD
+date: 2025-03-11
 category: essay # Options: essay, research, critique, review, tutorial, etc.
 featured_image: /assets/images/writing/image-name.jpg
 author: Your Name
@@ -51,7 +51,7 @@ Continue developing your ideas with a second main point. Consider using:
 
 Provide your third main point or a different perspective on the topic. Consider including a visual element if it enhances understanding:
 
-```
+```js
 // Code block example
 function exampleCode() {
   return "This is a code example";
