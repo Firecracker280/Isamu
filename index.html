@@ -1,0 +1,173 @@
+---
+layout: default
+title: Portfolio
+---
+
+<div class="portfolio-container">
+  <header class="portfolio-header">
+    <h1 class="portfolio-title">{{ site.title }}</h1>
+    <p class="portfolio-subtitle">{{ site.description }}</p>
+  </header>
+
+  <!-- Category Navigation -->
+  <div class="category-nav">
+    <button class="category-button active" data-filter="all">All</button>
+    <button class="category-button" data-filter="writing">Writing</button>
+    <button class="category-button" data-filter="project">Projects</button>
+    <button class="category-button" data-filter="design">Design</button>
+  </div>
+
+  <!-- Portfolio Grid -->
+  <div class="portfolio-grid">
+    {% assign all_items = site.posts | concat: site.projects %}
+    {% assign sorted_items = all_items | sort: 'date' | reverse %}
+    
+    {% for item in sorted_items %}
+    <div class="portfolio-item {{ item.categories | join: ' ' }}" data-category="{{ item.categories | first }}">
+      <div class="portfolio-item-inner">
+        <div class="image-container">
+          {% if item.featured_image %}
+          <img data-src="{{ item.featured_image | relative_url }}" alt="{{ item.title }}" class="portfolio-image">
+          <div class="overlay"></div>
+          {% else %}
+          <div class="placeholder-image">
+            <span>{{ item.title | truncate: 2, '' }}</span>
+          </div>
+          {% endif %}
+        </div>
+        <div class="item-text">
+          <span class="item-category">{{ item.categories | first | capitalize }}</span>
+          <h2 class="item-title">{{ item.title }}</h2>
+          <p class="item-excerpt">{{ item.excerpt | strip_html | truncatewords: 20 }}</p>
+          <a href="{{ item.url | relative_url }}" class="item-link">View {{ item.categories | first | capitalize }}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  
+  <!-- Featured Section -->
+  <section class="featured-section">
+    <h2 class="section-title">Featured Work</h2>
+    <div class="featured-grid">
+      {% assign featured_items = site.posts | where: "featured", true | limit: 3 %}
+      {% for item in featured_items %}
+      <div class="featured-item animate-on-scroll">
+        <div class="featured-image-container">
+          {% if item.featured_image %}
+          <img data-src="{{ item.featured_image | relative_url }}" alt="{{ item.title }}" class="featured-image">
+          <div class="overlay"></div>
+          {% else %}
+          <div class="placeholder-image large">
+            <span>{{ item.title | truncate: 2, '' }}</span>
+          </div>
+          {% endif %}
+        </div>
+        <div class="featured-content">
+          <span class="featured-category">{{ item.categories | first | capitalize }}</span>
+          <h3 class="featured-title">{{ item.title }}</h3>
+          <p class="featured-excerpt">{{ item.excerpt | strip_html | truncatewords: 30 }}</p>
+          <a href="{{ item.url | relative_url }}" class="featured-link">Read More</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  
+  <!-- Recent Writings -->
+  <section class="content-section writings-section">
+    <h2 class="section-title">Recent Writings</h2>
+    <div class="writings-grid">
+      {% assign writings = site.posts | where_exp: "post", "post.categories contains 'writing'" | limit: 6 %}
+      {% for writing in writings %}
+      <div class="writing-item animate-on-scroll">
+        <span class="writing-date">{{ writing.date | date: "%B %d, %Y" }}</span>
+        <h3 class="writing-title">{{ writing.title }}</h3>
+        <p class="writing-excerpt">{{ writing.excerpt | strip_html | truncatewords: 20 }}</p>
+        <a href="{{ writing.url | relative_url }}" class="writing-link">Read Article</a>
+      </div>
+      {% endfor %}
+    </div>
+    <a href="{{ '/writings' | relative_url }}" class="view-all-link">View All Writings</a>
+  </section>
+  
+  <!-- Recent Projects -->
+  <section class="content-section projects-section">
+    <h2 class="section-title">Recent Projects</h2>
+    <div class="projects-grid">
+      {% assign projects = site.posts | where_exp: "post", "post.categories contains 'project'" | limit: 6 %}
+      {% for project in projects %}
+      <div class="project-item animate-on-scroll">
+        <div class="project-image-container">
+          {% if project.featured_image %}
+          <img data-src="{{ project.featured_image | relative_url }}" alt="{{ project.title }}" class="project-image">
+          <div class="overlay"></div>
+          {% else %}
+          <div class="placeholder-image">
+            <span>{{ project.title | truncate: 2, '' }}</span>
+          </div>
+          {% endif %}
+        </div>
+        <div class="project-content">
+          <span class="project-category">{{ project.categories | first | capitalize }}</span>
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-excerpt">{{ project.excerpt | strip_html | truncatewords: 15 }}</p>
+          <a href="{{ project.url | relative_url }}" class="project-link">View Project</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <a href="{{ '/projects' | relative_url }}" class="view-all-link">View All Projects</a>
+  </section>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Category filtering
+    const categoryButtons = document.querySelectorAll('.category-button');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const filter = this.getAttribute('data-filter');
+        
+        // Update active button
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Filter items
+        portfolioItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        
+        // Re-layout masonry grid
+        setTimeout(() => {
+          if (typeof masonryLayout === 'function') {
+            masonryLayout();
+          }
+        }, 300);
+      });
+    });
+    
+    // Animation on scroll
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    
+    const animateOnScroll = function() {
+      animateElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', animateOnScroll);
+    animateOnScroll(); // Initial check
+  });
+</script>
