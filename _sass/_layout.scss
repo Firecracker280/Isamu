@@ -1,0 +1,163 @@
+// Layout styles
+
+// Main grid layout
+.main-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  min-height: 100vh;
+  
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Content container
+.content-container {
+  padding: $spacing-lg $spacing-xl;
+  max-width: 1400px;
+  margin: 0 auto;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-lg $spacing-md;
+  }
+}
+
+// Split content layouts from screenshot
+.split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: $spacing-xl;
+  
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Content sections with consistent spacing
+.section {
+  margin-bottom: $spacing-xxl;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Columns for service and client lists
+.columns-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+  .column {
+    flex: 0 0 45%;
+    margin-bottom: $spacing-xl;
+    
+    @media (max-width: $breakpoint-md) {
+      flex: 0 0 100%;
+    }
+  }
+}
+
+// Hero section layout
+.hero-section {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $spacing-xxl 0;
+  
+  .hero-content {
+    max-width: 800px;
+  }
+}
+
+// About section from screenshots
+.about-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: $spacing-xl;
+  padding: $spacing-xxl 0;
+  
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Project grid
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: $spacing-lg;
+  
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Project showcase layout
+.project-showcase {
+  margin-bottom: $spacing-xxl;
+  
+  .project-header {
+    margin-bottom: $spacing-xl;
+  }
+  
+  .project-image {
+    margin-bottom: $spacing-lg;
+  }
+  
+  .project-description {
+    max-width: 700px;
+  }
+}
+
+// Services list layout
+.services-list {
+  display: flex;
+  flex-wrap: wrap;
+  
+  .service-item {
+    padding-right: $spacing-lg;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+// Footer layout
+.footer {
+  padding: $spacing-xl 0;
+  margin-top: $spacing-xxl;
+  
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    
+    a {
+      margin-right: $spacing-md;
+    }
+  }
+}
+
+// Utility classes
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.align-right {
+  margin-left: auto;
+}
+
+.mt-lg {
+  margin-top: $spacing-lg;
+}
+
+.mb-lg {
+  margin-bottom: $spacing-lg;
+}
+
+.hidden {
+  display: none;
+}
