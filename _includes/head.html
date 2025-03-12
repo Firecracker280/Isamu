@@ -1,0 +1,139 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <!-- SEO Meta Tags -->
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="author" content="{{ site.author }}">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:type" content="{% if page.date %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  {% if page.header_image %}
+  <meta property="og:image" content="{{ page.header_image | prepend: site.baseurl | prepend: site.url }}">
+  {% elsif site.default_image %}
+  <meta property="og:image" content="{{ site.default_image | prepend: site.baseurl | prepend: site.url }}">
+  {% endif %}
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  {% if page.header_image %}
+  <meta name="twitter:image" content="{{ page.header_image | prepend: site.baseurl | prepend: site.url }}">
+  {% elsif site.default_image %}
+  <meta name="twitter:image" content="{{ site.default_image | prepend: site.baseurl | prepend: site.url }}">
+  {% endif %}
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/favicon/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicon/favicon-16x16.png' | relative_url }}">
+  <link rel="manifest" href="{{ '/assets/favicon/site.webmanifest' | relative_url }}">
+  <link rel="mask-icon" href="{{ '/assets/favicon/safari-pinned-tab.svg' | relative_url }}" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/syntax.css' | relative_url }}">
+  {% if page.custom_css %}
+    {% for stylesheet in page.custom_css %}
+    <link rel="stylesheet" href="{{ '/assets/css/' | append: stylesheet | append: '.css' | relative_url }}">
+    {% endfor %}
+  {% endif %}
+  
+  <!-- JavaScript Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  
+  <!-- Inline Critical CSS -->
+  <style>
+    :root {
+      --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --font-body: 'Merriweather', Georgia, serif;
+      --font-code: 'Fira Mono', monospace;
+      --color-text: #101010;
+      --color-text-light: #666;
+      --color-background: #fff;
+      --color-accent: #333;
+      --color-link: #000;
+      --color-border: #eee;
+    }
+    
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text);
+      line-height: 1.7;
+      background-color: var(--color-background);
+      margin: 0;
+      padding: 0;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    code, pre {
+      font-family: var(--font-code);
+    }
+    
+    a {
+      color: var(--color-link);
+      text-decoration: none;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Prevent FOUC (Flash of Unstyled Content) */
+    .no-js {
+      opacity: 0;
+    }
+    
+    .js-loaded {
+      opacity: 1;
+      transition: opacity 0.3s ease-in;
+    }
+  </style>
+  
+  <!-- Inline JavaScript -->
+  <script>
+    // Add 'js-loaded' class once DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js-loaded');
+    });
+  </script>
+  
+  <!-- Google Analytics or other analytics (optional) -->
+  {% if site.google_analytics %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
+  {% endif %}
+</head>
