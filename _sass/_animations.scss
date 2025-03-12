@@ -1,0 +1,202 @@
+// Animation definitions
+
+// Fade in animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Slide up animation
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Slide in from left
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// Slide in from right
+@keyframes slideInRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+// Scale animation
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// Animation utility classes
+.animate {
+  opacity: 0;
+  
+  &.fade-in {
+    animation: fadeIn $transition-default forwards;
+  }
+  
+  &.slide-up {
+    animation: slideUp $transition-default forwards;
+  }
+  
+  &.slide-left {
+    animation: slideInLeft $transition-default forwards;
+  }
+  
+  &.slide-right {
+    animation: slideInRight $transition-default forwards;
+  }
+  
+  &.scale-in {
+    animation: scaleIn $transition-default forwards;
+  }
+  
+  // Animation delays
+  @for $i from 1 through 10 {
+    &.delay-#{$i} {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+}
+
+// Page transition animations
+.page-transition {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $color-black;
+  z-index: $z-index-modal + 1;
+  transform: translateY(100%);
+  
+  &.entering {
+    animation: pageEnter 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+  
+  &.leaving {
+    transform: translateY(0);
+    animation: pageLeave 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+}
+
+@keyframes pageEnter {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes pageLeave {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+// Hover effects
+.hover-effect {
+  position: relative;
+  overflow: hidden;
+  
+  img {
+    transition: transform $transition-slow;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color-black, 0.4);
+    opacity: 0;
+    transition: opacity $transition-default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $color-white;
+  }
+  
+  &:hover {
+    img {
+      transform: scale(1.05);
+    }
+    
+    .overlay {
+      opacity: 1;
+    }
+  }
+}
+
+// Smooth scroll behavior
+html {
+  scroll-behavior: smooth;
+}
+
+// Loading spinner animation
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba($color-black, 0.1);
+  border-radius: 50%;
+  border-top-color: $color-black;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Text reveal animation
+.text-reveal {
+  overflow: hidden;
+  
+  .reveal-content {
+    transform: translateY(100%);
+    animation: textReveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+}
+
+@keyframes textReveal {
+  to {
+    transform: translateY(0);
+  }
+}
