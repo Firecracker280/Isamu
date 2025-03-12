@@ -1,0 +1,148 @@
+// Typography styles
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: $spacing-md;
+  font-weight: $font-weight-light;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1, .h1 {
+  font-size: 4rem;
+  margin-bottom: $spacing-lg;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 3rem;
+  }
+}
+
+h2, .h2 {
+  font-size: 3rem;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 2.5rem;
+  }
+}
+
+h3, .h3 {
+  font-size: 2.25rem;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 2rem;
+  }
+}
+
+// Special heading styles like those seen in the screenshots
+.page-title {
+  font-size: 3.5rem;
+  font-weight: $font-weight-light;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: $spacing-xl;
+  
+  &:after {
+    content: ".";
+    display: inline;
+  }
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: $font-weight-light;
+  margin-bottom: $spacing-lg;
+  
+  &:after {
+    content: ".";
+    display: inline;
+  }
+}
+
+// Paragraph styles
+p {
+  margin-bottom: $spacing-md;
+  font-weight: $font-weight-light;
+  max-width: 70ch; // For better readability
+  
+  &.lead {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: $spacing-lg;
+  }
+  
+  &.light {
+    color: $color-medium-gray;
+  }
+}
+
+// Links with special styling
+.text-link {
+  position: relative;
+  display: inline-block;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width $transition-default;
+  }
+  
+  &:hover:after {
+    width: 100%;
+  }
+}
+
+// List typography
+.list-item {
+  margin-bottom: $spacing-sm;
+}
+
+// Contact and CTA text
+.cta-text {
+  font-size: 1.25rem;
+  font-weight: $font-weight-light;
+  
+  a {
+    font-weight: $font-weight-normal;
+  }
+}
+
+// Elegant styling for italic text
+.elegant-italic {
+  font-style: italic;
+  font-family: $font-secondary;
+}
+
+// Project headings
+.project-title {
+  font-size: 2.5rem;
+  font-weight: $font-weight-light;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 2rem;
+  }
+}
+
+// Client list formatting
+.client-list {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  
+  span:after {
+    content: ", ";
+  }
+  
+  span:last-child:after {
+    content: "";
+  }
+}
+
+// Light text style
+.text-light {
+  font-weight: $font-weight-light;
+  color: $color-medium-gray;
+}
