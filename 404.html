@@ -1,0 +1,65 @@
+---
+layout: default
+permalink: /404.html
+title: Page Not Found
+---
+
+<div class="error-container">
+  <h1 class="error-title">404</h1>
+  <div class="error-divider"></div>
+  <h2 class="error-subtitle">Page Not Found</h2>
+  <p class="error-text">The page you're looking for doesn't exist or has been moved.</p>
+  <a href="{{ site.baseurl }}/" class="error-home-link">Return to Home</a>
+</div>
+
+<style>
+  .error-container {
+    text-align: center;
+    padding: 10% 5%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .error-title {
+    font-size: 8rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1;
+  }
+  
+  .error-divider {
+    width: 40px;
+    height: 4px;
+    background: #000;
+    margin: 2rem auto;
+  }
+  
+  .error-subtitle {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .error-text {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    line-height: 1.6;
+  }
+  
+  .error-home-link {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000;
+    text-decoration: none;
+    color: #000;
+    transition: opacity 0.3s ease;
+  }
+  
+  .error-home-link:hover {
+    opacity: 0.7;
+  }
+</style>
