@@ -1,0 +1,19 @@
+// Main SCSS file that imports all partials
+// Portfolio Theme - Black and White Minimalist Design
+
+// Variables
+@import "variables";
+
+// Base styles
+@import "base";
+
+// Typography
+@import "typography";
+
+// Layout
+@import "layout";
+
+// Components
+@import "sidebar";
+@import "animations";
+@import "projects";
