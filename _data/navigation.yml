@@ -1,1 +1,73 @@
+# Main navigation config for Jekyll portfolio
+# This file should be placed in your _data directory
 
+main:
+  - title: Home
+    url: /
+    
+  - title: Projects
+    url: /projects/
+    submenu:
+      - title: All Projects
+        url: /projects/
+      - title: Web Development
+        url: /projects/web/
+      - title: Design
+        url: /projects/design/
+      - title: Featured
+        url: /projects/featured/
+        
+  - title: Writings
+    url: /writings/
+    submenu:
+      - title: All Writings
+        url: /writings/
+      - title: Essays
+        url: /writings/essays/
+      - title: Research
+        url: /writings/research/
+      - title: Tutorials
+        url: /writings/tutorials/
+        
+  - title: Journal
+    url: /journal/
+    
+  - title: About
+    url: /about/
+    
+  - title: Contact
+    url: /contact/
+
+# Footer navigation
+footer:
+  - title: Home
+    url: /
+  - title: Projects
+    url: /projects/
+  - title: Writings
+    url: /writings/
+  - title: Journal
+    url: /journal/
+  - title: About
+    url: /about/
+  - title: Contact
+    url: /contact/
+  - title: Privacy Policy
+    url: /privacy/
+  - title: RSS Feed
+    url: /feed.xml
+
+# Social links
+social:
+  - title: GitHub
+    url: https://github.com/yourusername
+    icon: github
+  - title: LinkedIn
+    url: https://linkedin.com/in/yourprofile
+    icon: linkedin
+  - title: Twitter
+    url: https://twitter.com/yourusername
+    icon: twitter
+  - title: Instagram
+    url: https://instagram.com/yourusername
+    icon: instagram
