@@ -1,32 +1,17 @@
 <!--
 sidebar.html
-This file contains the sidebar navigation that appears on the left side of each page.
-It's designed to be a collapsible sidebar with a hamburger menu.
+This file contains the sidebar navigation that appears on the side of each page.
 -->
 
+<button class="hamburger-toggle">
+  <span class="hamburger-bar"></span>
+  <span class="hamburger-bar"></span>
+  <span class="hamburger-bar"></span>
+</button>
+
 <aside class="site-sidebar">
-  <button class="hamburger-toggle">
-    <span class="hamburger-bar"></span>
-    <span class="hamburger-bar"></span>
-    <span class="hamburger-bar"></span>
-  </button>
-  
   <div class="sidebar-container">
-    <!-- 
-    Site identity section with logo/name.
-    This serves as a link back to the homepage.
-    -->
-    <div class="site-identity">
-      <a href="{{ site.baseurl }}/" class="site-logo">
-        <!-- Text logo option -->
-        <span class="logo-text">{{ site.title }}</span>
-      </a>
-    </div>
-    
-    <!-- 
-    Main navigation menu.
-    This menu is populated from _data/navigation.yml.
-    -->
+    <!-- Main navigation menu -->
     <nav class="main-navigation">
       <ul class="nav-menu">
         {% for item in site.data.navigation.main %}
@@ -39,14 +24,13 @@ It's designed to be a collapsible sidebar with a hamburger menu.
       </ul>
     </nav>
     
-    <!-- 
-    Additional content for the sidebar
-    This can include a brief description or other information
-    -->
+    <!-- Description text -->
     <div class="sidebar-content">
       <p class="sidebar-description">
         I am a Paris based designer & art director with a focus on user experience and interaction. 
         I create & build digital products for people and brands.
+        This is a feed of my work for desktops, mobile devices & installations.
+        I am available for freelance. <a href="#" class="contact-link">Get in touch</a> or <a href="#" class="follow-link">Follow me</a>.
       </p>
     </div>
   </div>
