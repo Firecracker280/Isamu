@@ -1,66 +1,131 @@
-// Base styles, reset and global elements
+/*
+_base.scss
+This file contains base styling elements and resets for the portfolio website.
+It establishes the foundation for all other styling components.
 
-// Modern CSS Reset
+This file controls:
+1. CSS resets and normalizations
+2. Base HTML element styling
+3. Common utility classes
+4. Box-sizing and other global settings
+*/
+
+// Box sizing rules
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+// Remove default margin and padding
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, figure, figcaption, blockquote, dl, dd {
   margin: 0;
   padding: 0;
 }
 
-html {
-  font-size: $font-size-base;
-  scroll-behavior: smooth;
-}
-
+// Set core body defaults
 body {
-  font-family: $font-primary;
-  font-weight: $font-weight-normal;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
   line-height: 1.6;
-  color: $color-dark-gray;
-  background-color: $color-white;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
 }
 
-img, picture, video, canvas, svg {
-  display: block;
+// Make images easier to work with
+img {
   max-width: 100%;
+  display: block;
   height: auto;
 }
 
-a {
-  color: $color-black;
-  text-decoration: none;
-  transition: color $transition-default;
-  
-  &:hover {
-    color: $color-medium-gray;
-  }
+// Inherit fonts for inputs and buttons
+input, button, textarea, select {
+  font: inherit;
 }
 
-// Lists
+// Remove list styles
 ul, ol {
   list-style: none;
 }
 
-// Buttons
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
+// Set basic link styles
+a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: #666;
+  }
 }
 
-// Container
+// Basic heading styles
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+// Paragraph spacing
+p {
+  margin-bottom: 1.5em;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Container class for consistent width
 .container {
   width: 100%;
-  max-width: 1440px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 $spacing-md;
+  padding: 0 20px;
 }
 
-// Helper classes
+// Utility classes
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.hidden {
+  display: none;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -73,13 +138,55 @@ button {
   border: 0;
 }
 
-// Image handling
-.img-fluid {
-  max-width: 100%;
-  height: auto;
+// Clearfix
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
-// Create main sections for content
-.section {
-  padding: $spacing-xl 0;
+// Responsive breakpoints
+// These variables will be used throughout the SCSS files
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+$breakpoint-xlarge: 1200px;
+
+// Media query mixins
+@mixin small-up {
+  @media (min-width: #{$breakpoint-small}) {
+    @content;
+  }
+}
+
+@mixin medium-up {
+  @media (min-width: #{$breakpoint-medium}) {
+    @content;
+  }
+}
+
+@mixin large-up {
+  @media (min-width: #{$breakpoint-large}) {
+    @content;
+  }
+}
+
+@mixin xlarge-up {
+  @media (min-width: #{$breakpoint-xlarge}) {
+    @content;
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
 }
