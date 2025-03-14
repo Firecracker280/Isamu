@@ -1,163 +1,646 @@
-// Layout styles
+/*
+_layout.scss
+This file contains layout styling for the portfolio website.
+It defines the structure and positioning of major page components.
 
-// Main grid layout
-.main-grid {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  min-height: 100vh;
-  
-  @media (max-width: $breakpoint-md) {
-    grid-template-columns: 1fr;
-  }
-}
+This file controls:
+1. Grid layouts and page structure
+2. Header, footer, and content area styling
+3. Page-specific layouts (home, about, projects, etc.)
+4. Responsive layout adjustments
+*/
 
-// Content container
-.content-container {
-  padding: $spacing-lg $spacing-xl;
-  max-width: 1400px;
-  margin: 0 auto;
-  
-  @media (max-width: $breakpoint-md) {
-    padding: $spacing-lg $spacing-md;
-  }
-}
+// Import variables and mixins from base
+@import "base";
 
-// Split content layouts from screenshot
-.split-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: $spacing-xl;
-  
-  @media (max-width: $breakpoint-md) {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Content sections with consistent spacing
-.section {
-  margin-bottom: $spacing-xxl;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
-
-// Columns for service and client lists
-.columns-layout {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  
-  .column {
-    flex: 0 0 45%;
-    margin-bottom: $spacing-xl;
-    
-    @media (max-width: $breakpoint-md) {
-      flex: 0 0 100%;
-    }
-  }
-}
-
-// Hero section layout
-.hero-section {
-  min-height: 75vh;
+// Main layout structure
+.site-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: $spacing-xxl 0;
+  min-height: 100vh;
   
-  .hero-content {
-    max-width: 800px;
+  @include large-up {
+    flex-direction: row;
   }
 }
 
-// About section from screenshots
-.about-section {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: $spacing-xl;
-  padding: $spacing-xxl 0;
+// Content area
+.content {
+  flex: 1;
+  width: 100%;
+  padding-left: 0;
+  transition: padding-left 0.3s ease;
   
-  @media (max-width: $breakpoint-lg) {
-    grid-template-columns: 1fr;
+  @include large-up {
+    padding-left: 250px; // Width of sidebar
   }
 }
 
-// Project grid
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  grid-gap: $spacing-lg;
+// Page container
+.page-content-wrapper {
+  padding: 2rem;
   
-  @media (max-width: $breakpoint-md) {
-    grid-template-columns: 1fr;
+  @include medium-up {
+    padding: 3rem;
+  }
+  
+  @include large-up {
+    padding: 4rem;
   }
 }
 
-// Project showcase layout
-.project-showcase {
-  margin-bottom: $spacing-xxl;
+// Header styling
+.site-header {
+  padding: 1rem 2rem;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
   
-  .project-header {
-    margin-bottom: $spacing-xl;
-  }
-  
-  .project-image {
-    margin-bottom: $spacing-lg;
-  }
-  
-  .project-description {
-    max-width: 700px;
-  }
-}
-
-// Services list layout
-.services-list {
-  display: flex;
-  flex-wrap: wrap;
-  
-  .service-item {
-    padding-right: $spacing-lg;
-    margin-bottom: $spacing-sm;
-  }
-}
-
-// Footer layout
-.footer {
-  padding: $spacing-xl 0;
-  margin-top: $spacing-xxl;
-  
-  .footer-links {
+  .header-container {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .page-title-container {
+    flex: 1;
+  }
+  
+  .page-title {
+    margin-bottom: 0;
+  }
+  
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 1rem;
     
-    a {
-      margin-right: $spacing-md;
+    @include large-up {
+      display: none;
+    }
+    
+    .menu-icon {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #000;
+      position: relative;
+      
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        left: 0;
+      }
+      
+      &::before {
+        top: -8px;
+      }
+      
+      &::after {
+        bottom: -8px;
+      }
+    }
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+  }
+}
+
+// Footer styling
+.site-footer {
+  background-color: #f9f9f9;
+  padding: 3rem 2rem;
+  border-top: 1px solid #eee;
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+    @include medium-up {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include large-up {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .footer-heading {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-nav,
+  .social-links {
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    
+    input {
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid #ddd;
+    }
+    
+    button {
+      padding: 0.75rem;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      
+      &:hover {
+        background-color: #333;
+      }
+    }
+  }
+  
+  .copyright-bar {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+  }
+}
+
+// Home page layout
+.home {
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+    @include medium-up {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include large-up {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .project-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      
+      .project-info {
+        opacity: 1;
+      }
+    }
+    
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    
+    .project-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      color: #fff;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+    
+    .project-title {
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+    
+    .project-category {
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
   }
 }
 
-// Utility classes
-.text-right {
-  text-align: right;
+// About page layout
+.about {
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    
+    @include large-up {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+  
+  .about-image {
+    img {
+      border-radius: 4px;
+    }
+  }
+  
+  .about-text {
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    
+    .skill-item {
+      background-color: #f5f5f5;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem 0.5rem 0;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+  }
 }
 
-.text-center {
+// Projects page layout
+.projects {
+  .projects-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    
+    @include medium-up {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @include large-up {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+// Project detail page layout
+.project {
+  .cover-image {
+    margin: -4rem -4rem 3rem -4rem;
+    height: 60vh;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .project-header-content {
+    margin-bottom: 3rem;
+  }
+  
+  .project-title {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    
+    @include medium-up {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+  .meta-item {
+    h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+      color: #666;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+  }
+  
+  .project-content {
+    margin-bottom: 4rem;
+  }
+  
+  .project-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+    
+    @include medium-up {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-item {
+      img {
+        border-radius: 4px;
+      }
+      
+      figcaption {
+        margin-top: 0.75rem;
+        font-size: 0.9rem;
+        color: #666;
+      }
+    }
+  }
+  
+  .project-navigation {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+  }
+}
+
+// Writings and Journal pages layout
+.writings,
+.journal {
+  .posts-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .post-item {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 2rem;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .post-title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .post-meta {
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .post-excerpt {
+      margin-bottom: 1rem;
+    }
+    
+    .read-more {
+      font-weight: 500;
+      text-decoration: underline;
+    }
+  }
+}
+
+// Post detail page layout
+.post {
+  .featured-image {
+    margin: -4rem -4rem 3rem -4rem;
+    height: 50vh;
+    overflow: hidden;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .post-header-content {
+    margin-bottom: 3rem;
+  }
+  
+  .post-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .post-meta {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    
+    time, .post-author, .post-categories {
+      margin-right: 1rem;
+    }
+  }
+  
+  .post-content {
+    margin-bottom: 4rem;
+    
+    h2, h3, h4 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    img {
+      margin: 2rem 0;
+      border-radius: 4px;
+    }
+    
+    blockquote {
+      border-left: 4px solid #000;
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      font-style: italic;
+    }
+  }
+  
+  .post-tags {
+    margin-bottom: 2rem;
+    
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      
+      li {
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+        
+        a {
+          display: block;
+          padding: 0.3rem 0.8rem;
+          background-color: #f5f5f5;
+          border-radius: 20px;
+          font-size: 0.9rem;
+          transition: background-color 0.3s ease;
+          
+          &:hover {
+            background-color: #eee;
+          }
+        }
+      }
+    }
+  }
+  
+  .post-navigation {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+  }
+}
+
+// Contact page layout
+.contact {
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    
+    @include large-up {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  .contact-info {
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-methods {
+      margin-bottom: 2rem;
+      
+      .contact-method {
+        margin-bottom: 1rem;
+        
+        h3 {
+          font-size: 1.1rem;
+          margin-bottom: 0.3rem;
+        }
+      }
+    }
+    
+    .social-links {
+      display: flex;
+      
+      li {
+        margin-right: 1rem;
+      }
+    }
+  }
+  
+  .contact-form {
+    .form-group {
+      margin-bottom: 1.5rem;
+      
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+      
+      input,
+      textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        
+        &:focus {
+          outline: none;
+          border-color: #000;
+        }
+      }
+      
+      textarea {
+        min-height: 150px;
+      }
+    }
+    
+    button {
+      padding: 0.75rem 2rem;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      
+      &:hover {
+        background-color: #333;
+      }
+    }
+  }
+}
+
+// 404 page layout
+.error-container {
   text-align: center;
-}
-
-.align-right {
-  margin-left: auto;
-}
-
-.mt-lg {
-  margin-top: $spacing-lg;
-}
-
-.mb-lg {
-  margin-bottom: $spacing-lg;
-}
-
-.hidden {
-  display: none;
+  padding: 4rem 2rem;
+  
+  h1 {
+    font-size: 6rem;
+    margin-bottom: 0;
+  }
+  
+  h2 {
+    margin-bottom: 2rem;
+  }
+  
+  p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  ul {
+    margin: 1.5rem 0;
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  .navigation-help {
+    margin-top: 3rem;
+    
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      
+      li {
+        margin: 0 1rem 1rem;
+      }
+    }
+  }
 }
