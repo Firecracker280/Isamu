@@ -1,162 +1,106 @@
 ---
 layout: default
 ---
+<!--
+project.html
+This layout is used for project pages in the portfolio.
+It inherits from default.html and adds project-specific styling and structure.
+To use this layout, set "layout: project" in the front matter of your project files.
+
+You can customize this layout by:
+1. Adding project-specific metadata in the front matter (client, year, role, technologies)
+2. Adding project images in the front matter (cover_image, gallery_images)
+3. Modifying the project title and description in the front matter
+-->
+
 <article class="project">
-  {% if page.header_image %}
-  <div class="header-image">
-    <img src="{{ page.header_image | relative_url }}" alt="{{ page.title }}" class="bw-filter">
-  </div>
-  {% endif %}
-  
+  <!-- 
+  The project header section contains the title, metadata, and cover image.
+  If a cover_image is specified in the front matter, it will be displayed as a full-width banner.
+  -->
   <header class="project-header">
-    <h1 class="project-title">{{ page.title }}</h1>
+    {% if page.cover_image %}
+    <div class="cover-image">
+      <img src="{{ page.cover_image | relative_url }}" alt="{{ page.title }}" />
+    </div>
+    {% endif %}
     
-    <div class="project-meta">
-      {% if page.completion_date %}
-      <div class="meta-item">
-        <span class="meta-label">Completed:</span>
-        <time datetime="{{ page.completion_date | date_to_xmlschema }}">{{ page.completion_date | date: "%B %Y" }}</time>
-      </div>
-      {% endif %}
+    <div class="project-header-content">
+      <h1 class="project-title">{{ page.title }}</h1>
       
-      {% if page.client %}
-      <div class="meta-item">
-        <span class="meta-label">Client:</span>
-        <span class="meta-value">{{ page.client }}</span>
+      <!-- Project metadata displayed in a clean, organized format -->
+      <div class="project-meta">
+        <div class="meta-grid">
+          {% if page.client %}
+          <div class="meta-item">
+            <h3>Client</h3>
+            <p>{{ page.client }}</p>
+          </div>
+          {% endif %}
+          
+          {% if page.year %}
+          <div class="meta-item">
+            <h3>Year</h3>
+            <p>{{ page.year }}</p>
+          </div>
+          {% endif %}
+          
+          {% if page.role %}
+          <div class="meta-item">
+            <h3>Role</h3>
+            <p>{{ page.role }}</p>
+          </div>
+          {% endif %}
+          
+          {% if page.technologies %}
+          <div class="meta-item">
+            <h3>Technologies</h3>
+            <p>{{ page.technologies | join: ", " }}</p>
+          </div>
+          {% endif %}
+        </div>
       </div>
-      {% endif %}
-      
-      {% if page.role %}
-      <div class="meta-item">
-        <span class="meta-label">Role:</span>
-        <span class="meta-value">{{ page.role }}</span>
-      </div>
-      {% endif %}
-      
-      {% if page.technologies %}
-      <div class="meta-item">
-        <span class="meta-label">Technologies:</span>
-        <span class="meta-value">{{ page.technologies | join: ", " }}</span>
-      </div>
-      {% endif %}
     </div>
   </header>
 
+  <!-- 
+  The project content section contains the main description and details of the project.
+  This content comes from the markdown or HTML in your project files.
+  -->
   <div class="project-content">
     {{ content }}
   </div>
-
-  {% if page.project_url or page.github_repo %}
-  <div class="project-links">
-    {% if page.project_url %}
-    <a href="{{ page.project_url }}" class="project-link primary-link" target="_blank" rel="noopener noreferrer">View Project</a>
-    {% endif %}
-    
-    {% if page.github_repo %}
-    <a href="{{ page.github_repo }}" class="project-link secondary-link" target="_blank" rel="noopener noreferrer">View Code</a>
-    {% endif %}
+  
+  <!-- 
+  The project gallery section displays additional project images if specified.
+  Images can be added as an array in the front matter (gallery_images).
+  -->
+  {% if page.gallery_images %}
+  <div class="project-gallery">
+    {% for image in page.gallery_images %}
+    <figure class="gallery-item">
+      <img src="{{ image.url | relative_url }}" alt="{{ image.caption | default: 'Project image' }}" />
+      {% if image.caption %}
+      <figcaption>{{ image.caption }}</figcaption>
+      {% endif %}
+    </figure>
+    {% endfor %}
   </div>
   {% endif %}
-
-  <footer class="project-footer">
-    {% if page.categories.size > 0 %}
-    <div class="project-categories">
-      <h3>Categories</h3>
-      <ul>
-        {% for category in page.categories %}
-        <li><a href="{{ site.baseurl }}/categories/{{ category | slugify }}">{{ category }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
-    
-    <div class="project-navigation">
+  
+  <!-- 
+  The project navigation section allows users to browse between projects.
+  -->
+  <div class="project-navigation">
+    <div class="project-navigation-previous">
       {% if page.previous %}
-      <a href="{{ page.previous.url | relative_url }}" class="prev-project">
-        <span class="nav-label">Previous Project</span>
-        <span class="project-title">{{ page.previous.title }}</span>
-      </a>
-      {% endif %}
-      
-      {% if page.next %}
-      <a href="{{ page.next.url | relative_url }}" class="next-project">
-        <span class="nav-label">Next Project</span>
-        <span class="project-title">{{ page.next.title }}</span>
-      </a>
+      <a href="{{ page.previous.url | relative_url }}" title="{{ page.previous.title }}">&laquo; Previous Project</a>
       {% endif %}
     </div>
-  </footer>
+    <div class="project-navigation-next">
+      {% if page.next %}
+      <a href="{{ page.next.url | relative_url }}" title="{{ page.next.title }}">Next Project &raquo;</a>
+      {% endif %}
+    </div>
+  </div>
 </article>
-
-<style>
-  /* Project layout styles */
-  .project {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .header-image {
-    margin: -2rem -2rem 2rem;
-    height: 40vh;
-    min-height: 300px;
-    max-height: 500px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .header-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .bw-filter {
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-  }
-
-  .project-header {
-    margin-bottom: 3rem;
-  }
-
-  .project-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-  }
-
-  .project-meta {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #666;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .meta-label {
-    font-weight: 600;
-    color: #333;
-    margin-right: 0.5rem;
-  }
-
-  .project-content {
-    font-size: 1.1rem;
-    line-height: 1.8;
-  }
-
-  .project-content p {
-    margin-bottom: 1.5rem;
-  }
-
-  .project-content h2 {
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-  }
-
-  .project-content h3 {
-    margin-top: 2rem;
-    margin-bottom: 0.8rem;
