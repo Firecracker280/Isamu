@@ -1,44 +1,16 @@
 /*
 _sidebar.scss
 This file contains styling specific to the sidebar navigation component.
-It defines the appearance and behavior of the sidebar across different screen sizes.
-
-This file controls:
-1. Sidebar positioning and dimensions
-2. Navigation menu styling
-3. Logo and site identity styling
-4. Hamburger menu behavior
-5. Sidebar animation
 */
 
 // Import variables and mixins from base
 @import "base";
 
-// Sidebar container
-.site-sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 6.25%; // Approximately 1/16th of the page width
-  height: 100vh;
-  background-color: #111;
-  color: #fff;
-  z-index: 1000;
-  transition: width 0.3s ease;
-  overflow: hidden;
-  
-  // Expanded state
-  &.expanded {
-    width: 300px;
-  }
-}
-
-// Hamburger toggle button
+// Hamburger toggle button - visible at all times
 .hamburger-toggle {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: fixed;
+  top: 30px;
+  left: 30px;
   width: 24px;
   height: 20px;
   background: none;
@@ -54,13 +26,15 @@ This file controls:
   .hamburger-bar {
     width: 100%;
     height: 2px;
-    background-color: #fff;
+    background-color: #333;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
   
   // Hamburger button animation for active state
   &.active {
     .hamburger-bar {
+      background-color: #fff;
+      
       &:nth-child(1) {
         transform: translateY(9px) rotate(45deg);
       }
@@ -76,45 +50,45 @@ This file controls:
   }
 }
 
-// Sidebar inner container
-.sidebar-container {
-  width: 300px; // Same as expanded sidebar width
-  height: 100%;
-  padding: 80px 30px 30px;
-  opacity: 0;
-  transition: opacity 0.3s ease 0.1s; // Slight delay for better animation
+// Sidebar container
+.site-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0; // Position from right instead of left
+  width: 400px; // Adjust width as needed
+  height: 100vh;
+  background-color: #121212;
+  color: #fff;
+  z-index: 1000;
+  transform: translateX(100%); // Start off-screen to the right
+  transition: transform 0.4s ease;
+  overflow-y: auto;
   
-  // Show content when sidebar is expanded
-  .expanded & {
-    opacity: 1;
+  // Active state
+  &.active {
+    transform: translateX(0); // Move in from right
   }
 }
 
-// Site identity (logo/name)
-.site-identity {
-  margin-bottom: 3rem;
-  
-  .site-logo {
-    display: inline-block;
-    
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #fff;
-    }
-  }
+// Sidebar inner container
+.sidebar-container {
+  height: 100%;
+  padding: 80px 40px 40px;
 }
 
 // Main navigation
 .main-navigation {
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
   
   .nav-menu {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex; // Make menu items horizontal
+    flex-wrap: wrap; // Allow wrapping for smaller screens
     
     .nav-item {
+      margin-right: 1.5rem;
       margin-bottom: 1rem;
       
       a {
@@ -141,50 +115,48 @@ This file controls:
 
 // Sidebar content section
 .sidebar-content {
-  margin-top: 3rem;
-  
   .sidebar-description {
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.8;
+    
+    a {
+      color: #fff;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
-// Mobile menu overlay
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+// Main content shifting
+.main-content {
+  transition: transform 0.4s ease;
   
-  &.active {
-    opacity: 1;
-    visibility: visible;
+  &.shifted {
+    transform: translateX(-200px); // Shift main content left when menu opens
   }
-  
-  @include large-up {
-    display: none;
-  }
+}
+
+// Prevent body scrolling when menu is open
+body.menu-open {
+  overflow: hidden;
 }
 
 // Responsive adjustments
 @media (max-width: 768px) {
   .site-sidebar {
-    width: 0;
-    
-    &.expanded {
-      width: 250px;
-    }
+    width: 85%; // Wider on mobile
+  }
+  
+  .main-content.shifted {
+    transform: translateX(-100px); // Shift less on mobile
   }
   
   .hamburger-toggle {
-    left: 15px;
-    transform: none;
+    top: 20px;
+    left: 20px;
   }
 }
