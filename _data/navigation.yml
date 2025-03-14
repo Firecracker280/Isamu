@@ -1,73 +1,64 @@
-# Main navigation config for Jekyll portfolio
-# This file should be placed in your _data directory
+# Navigation configuration
+# This file defines the navigation structure for the portfolio website
+# It's used to generate the navigation menu in the sidebar and other navigation elements
+#
+# This file controls:
+# 1. The main navigation links in the sidebar
+# 2. The order of navigation items
+# 3. The text and URLs for each navigation item
+#
+# To modify the navigation:
+# - Add, remove, or reorder items in the 'main' list
+# - Each item needs a title and url
+# - Optionally add a target attribute for external links
 
+# Main navigation items
+# These appear in the sidebar and potentially other navigation areas
 main:
   - title: Home
     url: /
-    
-  - title: Projects
-    url: /projects/
-    submenu:
-      - title: All Projects
-        url: /projects/
-      - title: Web Development
-        url: /projects/web/
-      - title: Design
-        url: /projects/design/
-      - title: Featured
-        url: /projects/featured/
-        
-  - title: Writings
-    url: /writings/
-    submenu:
-      - title: All Writings
-        url: /writings/
-      - title: Essays
-        url: /writings/essays/
-      - title: Research
-        url: /writings/research/
-      - title: Tutorials
-        url: /writings/tutorials/
-        
-  - title: Journal
-    url: /journal/
-    
+  
   - title: About
     url: /about/
-    
+  
+  - title: Projects
+    url: /projects/
+  
+  - title: Writings
+    url: /writings/
+  
+  - title: Journal
+    url: /journal/
+  
   - title: Contact
     url: /contact/
 
-# Footer navigation
+# You can add additional navigation sections as needed
+# For example, a footer navigation or social links section
 footer:
   - title: Home
     url: /
-  - title: Projects
-    url: /projects/
-  - title: Writings
-    url: /writings/
-  - title: Journal
-    url: /journal/
+  
   - title: About
     url: /about/
+  
   - title: Contact
     url: /contact/
+  
   - title: Privacy Policy
     url: /privacy/
-  - title: RSS Feed
-    url: /feed.xml
 
-# Social links
+# Social media links
+# These can be used in the sidebar, footer, or other areas
 social:
   - title: GitHub
     url: https://github.com/yourusername
     icon: github
-  - title: LinkedIn
-    url: https://linkedin.com/in/yourprofile
-    icon: linkedin
+  
   - title: Twitter
     url: https://twitter.com/yourusername
     icon: twitter
-  - title: Instagram
-    url: https://instagram.com/yourusername
-    icon: instagram
+  
+  - title: LinkedIn
+    url: https://linkedin.com/in/yourusername
+    icon: linkedin
