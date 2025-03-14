@@ -1,67 +1,128 @@
 ---
 layout: page
-title: About Me
+title: About
 permalink: /about/
+banner_image: /assets/images/about-banner.jpg
 ---
 
-# About Me
+<!--
+about.md
+This is the About page of the portfolio website.
+It provides information about you, your background, skills, and experience.
 
-## Bio
+This file controls:
+1. The content of the About page
+2. The layout and structure of the page (using the page layout)
+3. The banner image at the top of the page
 
-Hello! I'm [Your Name], a [Your Profession] based in [Your Location]. I specialize in [Your Specialization] and am passionate about [Your Interests/Passions].
+To modify this page:
+- Update the front matter (title, permalink, banner_image)
+- Edit the content to reflect your personal information
+- Add or remove sections as needed
+-->
 
-I approach my work with [Your Work Philosophy] and strive to [Your Professional Goals]. My background in [Your Background] has equipped me with a unique perspective that I bring to every project.
+## About Me
 
+Fuelled by an obsession of interaction systems, I aim to deliver thoughtful and challenging concepts through a process of research and development. This approach is influenced by a science background and an ability to work across multiple platforms, increasing the scope and potential of an idea. The possibilities of creating media through both technology and aesthetics are infinite.
+
+Through a process of *research, concept development & design*, I help build thoughtful interactive experiences for digital brands.
+
+<!-- 
+Profile section with personal information.
+This section provides a brief overview of your professional background.
+-->
+## Profile
+
+As art director and designer, I have been creating digital products and leading creative teams to connect design, technology & digital storytelling. I believe in technology as a medium for creative expression and in design as a way to enhance human experiences.
+
+My work spans across various domains including web design, user experience, interactive installations, and digital storytelling. I collaborate with brands and agencies to create meaningful digital experiences that engage and inspire.
+
+<!-- 
+Approach section describing your work methodology.
+This section explains how you approach projects and your design philosophy.
+-->
+## Approach
+
+Fuelled by an obsession of interaction systems, I aim to deliver thoughtful and challenging concepts through a process of research and development. This approach is influenced by a science background and an ability to work across multiple platforms, increasing the scope and potential of an idea.
+
+My design process typically involves:
+
+1. **Research & Discovery** - Understanding the problem space, audience, and context
+2. **Concept Development** - Exploring ideas and possibilities through sketching and prototyping
+3. **Design & Refinement** - Crafting the visual and interactive elements of the experience
+4. **Implementation & Testing** - Bringing the design to life and ensuring it works as intended
+
+<!-- 
+Skills section highlighting your technical and creative abilities.
+This section showcases your expertise and capabilities.
+-->
 ## Skills
 
-### Technical Skills
-- Skill 1
-- Skill 2
-- Skill 3
+- User Experience (UX) Design
+- User Interface (UI) Design
+- Web Design & Development
+- Interactive Design
+- Digital Art Direction
+- Creative Coding
+- Project Management
+- Team Leadership
 
-### Soft Skills
-- Skill 1
-- Skill 2
-- Skill 3
+<!-- 
+Awards and Publications section.
+This section highlights recognition your work has received.
+-->
+## Awards & Publications
 
-### Tools & Technologies
-- Tool/Technology 1
-- Tool/Technology 2
-- Tool/Technology 3
+Commissioned and personal work awards by the Webby Awards, FWA, Awwwards, The Lovie Awards, Midem, TOP COM, Europrix TTA, e-Magiciens, Adobe and published in Etapes, Monocle and TASCHEN.
 
-## Experience
+<!-- 
+Exhibitions and Lectures section.
+This section showcases your public appearances and speaking engagements.
+-->
+## Exhibitions & Lectures
 
-### [Company/Organization Name]
-**[Your Role]** | [Start Date] - [End Date]
-- Achievement 1
-- Achievement 2
-- Achievement 3
+<table>
+  <tbody>
+    <tr>
+      <td>2023</td>
+      <td>Workshop, Design School, Typography for the web</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>Jury, Creative Jam</td>
+    </tr>
+    <tr>
+      <td>2021</td>
+      <td>Workshop, University Design Program, Web Design</td>
+    </tr>
+    <tr>
+      <td>2020</td>
+      <td>Exhibition, Digital Arts Festival</td>
+    </tr>
+    <tr>
+      <td>2019</td>
+      <td>Lecture, Interactive Media Conference</td>
+    </tr>
+    <tr>
+      <td>2018</td>
+      <td>Workshop, Design School, Design & Typography for the web</td>
+    </tr>
+  </tbody>
+</table>
 
-### [Company/Organization Name]
-**[Your Role]** | [Start Date] - [End Date]
-- Achievement 1
-- Achievement 2
-- Achievement 3
+<!-- 
+Contact information section.
+This section provides ways for visitors to get in touch with you.
+-->
+## Get in Touch
 
-## Education
+Interested in working together? Feel free to reach out through the [contact page](/contact/) or connect with me on social media.
 
-### [Institution Name]
-**[Degree]** | [Year Completed]
-- Relevant coursework: [Course 1], [Course 2], [Course 3]
-- [Notable achievement or activity]
-
-## Resume
-
-You can view my full resume [here](/assets/documents/resume.pdf).
-
-Alternatively, you can <a href="mailto:your.email@example.com?subject=Resume%20Request">email me</a> to request a copy.
-
-## Get In Touch
-
-I'm always open to discussing new projects, opportunities, or partnerships.
-
-- Email: [your.email@example.com](mailto:your.email@example.com)
-- LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- GitHub: [Your GitHub Profile](https://github.com/yourusername)
-
-{% include contact-form.html %}
+<!-- 
+You can add more sections as needed, such as:
+- Education
+- Work Experience
+- Testimonials
+- Personal Projects
+- etc.
+-->
