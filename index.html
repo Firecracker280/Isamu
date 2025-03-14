@@ -1,173 +1,125 @@
 ---
 layout: default
-title: Portfolio
 ---
+<!--
+index.html
+This is the homepage of the portfolio website.
+It displays featured projects in a grid layout with images and brief descriptions.
 
-<div class="portfolio-container">
-  <header class="portfolio-header">
-    <h1 class="portfolio-title">{{ site.title }}</h1>
-    <p class="portfolio-subtitle">{{ site.description }}</p>
-  </header>
+This file controls:
+1. The homepage hero section
+2. The featured projects grid
+3. Any additional homepage sections
 
-  <!-- Category Navigation -->
-  <div class="category-nav">
-    <button class="category-button active" data-filter="all">All</button>
-    <button class="category-button" data-filter="writing">Writing</button>
-    <button class="category-button" data-filter="project">Projects</button>
-    <button class="category-button" data-filter="design">Design</button>
-  </div>
+To modify this page:
+- Change the hero section content to personalize your introduction
+- Add or remove projects from the grid by editing the for loop
+- Add additional sections as needed
+-->
 
-  <!-- Portfolio Grid -->
-  <div class="portfolio-grid">
-    {% assign all_items = site.posts | concat: site.projects %}
-    {% assign sorted_items = all_items | sort: 'date' | reverse %}
-    
-    {% for item in sorted_items %}
-    <div class="portfolio-item {{ item.categories | join: ' ' }}" data-category="{{ item.categories | first }}">
-      <div class="portfolio-item-inner">
-        <div class="image-container">
-          {% if item.featured_image %}
-          <img data-src="{{ item.featured_image | relative_url }}" alt="{{ item.title }}" class="portfolio-image">
-          <div class="overlay"></div>
-          {% else %}
-          <div class="placeholder-image">
-            <span>{{ item.title | truncate: 2, '' }}</span>
-          </div>
-          {% endif %}
-        </div>
-        <div class="item-text">
-          <span class="item-category">{{ item.categories | first | capitalize }}</span>
-          <h2 class="item-title">{{ item.title }}</h2>
-          <p class="item-excerpt">{{ item.excerpt | strip_html | truncatewords: 20 }}</p>
-          <a href="{{ item.url | relative_url }}" class="item-link">View {{ item.categories | first | capitalize }}</a>
-        </div>
+<div class="home">
+  <!-- 
+  Hero section with introduction and call to action.
+  This section introduces you and your work to visitors.
+  -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1 class="animate-on-scroll">Hello<span class="accent">.</span></h1>
+      <div class="hero-description animate-on-scroll">
+        <p class="lead">Through a process of <em>research, concept development & design</em>, I help build thoughtful interactive experiences for digital brands.</p>
       </div>
-    </div>
-    {% endfor %}
-  </div>
-  
-  <!-- Featured Section -->
-  <section class="featured-section">
-    <h2 class="section-title">Featured Work</h2>
-    <div class="featured-grid">
-      {% assign featured_items = site.posts | where: "featured", true | limit: 3 %}
-      {% for item in featured_items %}
-      <div class="featured-item animate-on-scroll">
-        <div class="featured-image-container">
-          {% if item.featured_image %}
-          <img data-src="{{ item.featured_image | relative_url }}" alt="{{ item.title }}" class="featured-image">
-          <div class="overlay"></div>
-          {% else %}
-          <div class="placeholder-image large">
-            <span>{{ item.title | truncate: 2, '' }}</span>
-          </div>
-          {% endif %}
-        </div>
-        <div class="featured-content">
-          <span class="featured-category">{{ item.categories | first | capitalize }}</span>
-          <h3 class="featured-title">{{ item.title }}</h3>
-          <p class="featured-excerpt">{{ item.excerpt | strip_html | truncatewords: 30 }}</p>
-          <a href="{{ item.url | relative_url }}" class="featured-link">Read More</a>
-        </div>
+      <div class="hero-cta animate-on-scroll">
+        <a href="{{ site.baseurl }}/about/" class="btn btn-primary">Learn more about me</a>
       </div>
-      {% endfor %}
     </div>
   </section>
-  
-  <!-- Recent Writings -->
-  <section class="content-section writings-section">
-    <h2 class="section-title">Recent Writings</h2>
-    <div class="writings-grid">
-      {% assign writings = site.posts | where_exp: "post", "post.categories contains 'writing'" | limit: 6 %}
-      {% for writing in writings %}
-      <div class="writing-item animate-on-scroll">
-        <span class="writing-date">{{ writing.date | date: "%B %d, %Y" }}</span>
-        <h3 class="writing-title">{{ writing.title }}</h3>
-        <p class="writing-excerpt">{{ writing.excerpt | strip_html | truncatewords: 20 }}</p>
-        <a href="{{ writing.url | relative_url }}" class="writing-link">Read Article</a>
-      </div>
-      {% endfor %}
-    </div>
-    <a href="{{ '/writings' | relative_url }}" class="view-all-link">View All Writings</a>
-  </section>
-  
-  <!-- Recent Projects -->
-  <section class="content-section projects-section">
-    <h2 class="section-title">Recent Projects</h2>
+
+  <!-- 
+  Featured projects section.
+  This section displays a grid of your best projects.
+  Projects are pulled from the _projects collection.
+  -->
+  <section class="projects-section">
     <div class="projects-grid">
-      {% assign projects = site.posts | where_exp: "post", "post.categories contains 'project'" | limit: 6 %}
-      {% for project in projects %}
-      <div class="project-item animate-on-scroll">
-        <div class="project-image-container">
-          {% if project.featured_image %}
-          <img data-src="{{ project.featured_image | relative_url }}" alt="{{ project.title }}" class="project-image">
-          <div class="overlay"></div>
-          {% else %}
-          <div class="placeholder-image">
-            <span>{{ project.title | truncate: 2, '' }}</span>
-          </div>
+      {% assign featured_projects = site.projects | where: "featured", true | sort: "order" %}
+      {% for project in featured_projects limit: 6 %}
+      <a href="{{ project.url | relative_url }}" class="project-card">
+        {% if project.thumbnail %}
+        <img src="{{ project.thumbnail | relative_url }}" alt="{{ project.title }}" />
+        {% endif %}
+        <div class="project-info">
+          <h2 class="project-title">{{ project.title }}</h2>
+          {% if project.category %}
+          <p class="project-category">{{ project.category }}</p>
           {% endif %}
         </div>
-        <div class="project-content">
-          <span class="project-category">{{ project.categories | first | capitalize }}</span>
-          <h3 class="project-title">{{ project.title }}</h3>
-          <p class="project-excerpt">{{ project.excerpt | strip_html | truncatewords: 15 }}</p>
-          <a href="{{ project.url | relative_url }}" class="project-link">View Project</a>
+      </a>
+      {% endfor %}
+    </div>
+    
+    <div class="view-all-projects">
+      <a href="{{ site.baseurl }}/projects/" class="text-link">View all projects</a>
+    </div>
+  </section>
+
+  <!-- 
+  Recent writings section.
+  This section displays your most recent writings or articles.
+  Writings are pulled from the _writings collection.
+  -->
+  <section class="recent-writings">
+    <h2 class="section-title">Recent Writings</h2>
+    
+    <div class="writings-preview">
+      {% assign recent_writings = site.writings | sort: "date" | reverse | limit: 3 %}
+      {% for writing in recent_writings %}
+      <div class="writing-item">
+        <h3 class="writing-title">
+          <a href="{{ writing.url | relative_url }}">{{ writing.title }}</a>
+        </h3>
+        <div class="writing-meta">
+          <time datetime="{{ writing.date | date_to_xmlschema }}">{{ writing.date | date: "%B %-d, %Y" }}</time>
         </div>
+        <div class="writing-excerpt">
+          {{ writing.excerpt | strip_html | truncatewords: 30 }}
+        </div>
+        <a href="{{ writing.url | relative_url }}" class="read-more">Read more</a>
       </div>
       {% endfor %}
     </div>
-    <a href="{{ '/projects' | relative_url }}" class="view-all-link">View All Projects</a>
+    
+    <div class="view-all-writings">
+      <a href="{{ site.baseurl }}/writings/" class="text-link">View all writings</a>
+    </div>
+  </section>
+
+  <!-- 
+  Journal section.
+  This section displays your most recent journal posts or updates.
+  Posts are pulled from the _posts collection.
+  -->
+  <section class="recent-journal">
+    <h2 class="section-title">From the Journal</h2>
+    
+    <div class="journal-preview">
+      {% for post in site.posts limit: 2 %}
+      <div class="journal-item">
+        <h3 class="journal-title">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </h3>
+        <div class="journal-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+        </div>
+        <div class="journal-excerpt">
+          {{ post.excerpt | strip_html | truncatewords: 30 }}
+        </div>
+        <a href="{{ post.url | relative_url }}" class="read-more">Read more</a>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="view-all-journal">
+      <a href="{{ site.baseurl }}/journal/" class="text-link">View all journal entries</a>
+    </div>
   </section>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Category filtering
-    const categoryButtons = document.querySelectorAll('.category-button');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    
-    categoryButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const filter = this.getAttribute('data-filter');
-        
-        // Update active button
-        categoryButtons.forEach(btn => btn.classList.remove('active'));
-        this.classList.add('active');
-        
-        // Filter items
-        portfolioItems.forEach(item => {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-        
-        // Re-layout masonry grid
-        setTimeout(() => {
-          if (typeof masonryLayout === 'function') {
-            masonryLayout();
-          }
-        }, 300);
-      });
-    });
-    
-    // Animation on scroll
-    const animateElements = document.querySelectorAll('.animate-on-scroll');
-    
-    const animateOnScroll = function() {
-      animateElements.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-          el.classList.add('visible');
-        }
-      });
-    };
-    
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Initial check
-  });
-</script>
