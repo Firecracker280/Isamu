@@ -1,194 +1,95 @@
+<!--
+footer.html
+This file contains the footer section that appears at the bottom of each page.
+It's included in the default layout and provides site-wide footer elements.
+
+This file controls:
+1. Copyright information
+2. Social media links
+3. Secondary navigation
+4. Any other footer elements like newsletter signup
+-->
+
 <footer class="site-footer">
   <div class="footer-container">
+    <!-- 
+    Main footer content with multiple columns for different types of information.
+    You can customize this structure based on your needs.
+    -->
     <div class="footer-content">
-      <!-- Copyright section -->
-      <div class="footer-copyright">
-        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title | default: site.name }}. <span class="footer-rights">All rights reserved.</span></p>
+      <!-- About column with brief site description -->
+      <div class="footer-column footer-about">
+        <h3 class="footer-heading">About</h3>
+        <p>{{ site.description }}</p>
       </div>
       
-      <!-- Social links -->
-      <div class="footer-social">
-        <ul class="social-list">
+      <!-- Quick links column for secondary navigation -->
+      <div class="footer-column footer-links">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-nav">
+          <li><a href="{{ site.baseurl }}/">Home</a></li>
+          <li><a href="{{ site.baseurl }}/about/">About</a></li>
+          <li><a href="{{ site.baseurl }}/projects/">Projects</a></li>
+          <li><a href="{{ site.baseurl }}/writings/">Writings</a></li>
+          <li><a href="{{ site.baseurl }}/journal/">Journal</a></li>
+          <li><a href="{{ site.baseurl }}/contact/">Contact</a></li>
+        </ul>
+      </div>
+      
+      <!-- Social media links column -->
+      <div class="footer-column footer-social">
+        <h3 class="footer-heading">Connect</h3>
+        <ul class="social-links">
           {% if site.github_username %}
           <li>
-            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" aria-label="GitHub">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">
+              GitHub
             </a>
           </li>
           {% endif %}
           
           {% if site.twitter_username %}
           <li>
-            <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener" aria-label="Twitter">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">
+              Twitter
             </a>
           </li>
           {% endif %}
           
           {% if site.linkedin_username %}
           <li>
-            <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">
+              LinkedIn
             </a>
           </li>
           {% endif %}
           
-          {% if site.instagram_username %}
-          <li>
-            <a href="https://instagram.com/{{ site.instagram_username }}" target="_blank" rel="noopener" aria-label="Instagram">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-          </li>
-          {% endif %}
+          <!-- Add more social platforms as needed -->
         </ul>
+      </div>
+      
+      <!-- Optional newsletter signup or contact form -->
+      <div class="footer-column footer-newsletter">
+        <h3 class="footer-heading">Stay Updated</h3>
+        <p>Subscribe to receive updates about new projects and writings.</p>
+        <!-- 
+        This is a placeholder for a newsletter signup form.
+        Replace with your actual newsletter service code.
+        -->
+        <form class="newsletter-form" action="#" method="post">
+          <input type="email" name="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
       </div>
     </div>
     
-    <!-- Back to top button -->
-    <button class="back-to-top" aria-label="Back to top">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="12" y1="19" x2="12" y2="5"></line>
-        <polyline points="5 12 12 5 19 12"></polyline>
-      </svg>
-    </button>
+    <!-- 
+    Copyright bar at the bottom of the footer.
+    Automatically updates the year.
+    -->
+    <div class="copyright-bar">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+      <!-- You can add additional links here like Privacy Policy, Terms of Service, etc. -->
+    </div>
   </div>
 </footer>
-
-<style>
-  /* Footer styles */
-  .site-footer {
-    margin-top: 4rem;
-    padding: 2rem 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    font-family: var(--font-heading);
-    position: relative;
-  }
-  
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-  }
-  
-  .footer-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .footer-copyright {
-    font-size: 0.9rem;
-    color: #666;
-  }
-  
-  .footer-rights {
-    opacity: 0.7;
-  }
-  
-  /* Social links */
-  .footer-social .social-list {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    gap: 1rem;
-  }
-  
-  .footer-social .social-list a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    color: #666;
-    background-color: transparent;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease;
-  }
-  
-  .footer-social .social-list a:hover {
-    background-color: #000;
-    color: #fff;
-    border-color: #000;
-    transform: translateY(-2px);
-  }
-  
-  /* Back to top button */
-  .back-to-top {
-    position: absolute;
-    right: 2rem;
-    bottom: calc(100% + 1.5rem);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #000;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  }
-  
-  .back-to-top.visible {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-  
-  .back-to-top:hover {
-    background-color: #000;
-    color: #fff;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Responsive styles */
-  @media (max-width: 768px) {
-    .footer-content {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 1.5rem;
-    }
-    
-    .back-to-top {
-      right: 1rem;
-    }
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Back to top functionality
-    const backToTopButton = document.querySelector('.back-to-top');
-    
-    if (backToTopButton) {
-      // Show button after scrolling down
-      window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-          backToTopButton.classList.add('visible');
-        } else {
-          backToTopButton.classList.remove('visible');
-        }
-      });
-      
-      // Scroll to top when clicked
-      backToTopButton.addEventListener('click', function() {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    }
-  });
-</script>
