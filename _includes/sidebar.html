@@ -1,20 +1,16 @@
 <!--
 sidebar.html
 This file contains the sidebar navigation that appears on the left side of each page.
-It's included in the default layout and provides the main site navigation.
-
-This file controls:
-1. Site identity (logo/name)
-2. Main navigation menu
-3. Social links
-4. Any other sidebar elements
-
-The sidebar is designed to be:
-- Always visible on desktop (fixed position)
-- Hidden by default on mobile, toggled with the menu button
+It's designed to be a collapsible sidebar with a hamburger menu.
 -->
 
 <aside class="site-sidebar">
+  <button class="hamburger-toggle">
+    <span class="hamburger-bar"></span>
+    <span class="hamburger-bar"></span>
+    <span class="hamburger-bar"></span>
+  </button>
+  
   <div class="sidebar-container">
     <!-- 
     Site identity section with logo/name.
@@ -22,17 +18,8 @@ The sidebar is designed to be:
     -->
     <div class="site-identity">
       <a href="{{ site.baseurl }}/" class="site-logo">
-        <!-- 
-        You can use either a text logo or an image logo.
-        Uncomment the appropriate option below.
-        -->
-        
         <!-- Text logo option -->
         <span class="logo-text">{{ site.title }}</span>
-        
-        <!-- Image logo option 
-        <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="{{ site.title }}" />
-        -->
       </a>
     </div>
     
@@ -53,45 +40,14 @@ The sidebar is designed to be:
     </nav>
     
     <!-- 
-    Social links section.
-    These links are pulled from the site configuration.
+    Additional content for the sidebar
+    This can include a brief description or other information
     -->
-    <div class="sidebar-social">
-      <ul class="social-links">
-        {% if site.github_username %}
-        <li>
-          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" aria-label="GitHub">
-            <span class="social-icon github-icon"></span>
-          </a>
-        </li>
-        {% endif %}
-        
-        {% if site.twitter_username %}
-        <li>
-          <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener" aria-label="Twitter">
-            <span class="social-icon twitter-icon"></span>
-          </a>
-        </li>
-        {% endif %}
-        
-        {% if site.linkedin_username %}
-        <li>
-          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <span class="social-icon linkedin-icon"></span>
-          </a>
-        </li>
-        {% endif %}
-        
-        <!-- Add more social platforms as needed -->
-      </ul>
-    </div>
-    
-    <!-- 
-    Additional sidebar elements can be added here.
-    For example, a brief bio, contact info, or copyright notice.
-    -->
-    <div class="sidebar-footer">
-      <p class="copyright">&copy; {{ site.time | date: '%Y' }}</p>
+    <div class="sidebar-content">
+      <p class="sidebar-description">
+        I am a Paris based designer & art director with a focus on user experience and interaction. 
+        I create & build digital products for people and brands.
+      </p>
     </div>
   </div>
 </aside>
