@@ -1,120 +1,43 @@
 ---
 layout: default
 ---
+<!--
+page.html
+This layout is used for standard pages like About, Contact, etc.
+It inherits from default.html and adds page-specific styling and structure.
+To use this layout, set "layout: page" in the front matter of your content files.
+
+You can customize this layout by:
+1. Adding page-specific classes in the front matter (class: my-custom-class)
+2. Adding a banner image in the front matter (banner_image: /path/to/image.jpg)
+3. Modifying the page title and subtitle in the front matter
+-->
+
 <article class="page">
-  {% if page.header_image %}
-  <div class="header-image">
-    <img src="{{ page.header_image | relative_url }}" alt="{{ page.title }}" class="bw-filter">
-  </div>
-  {% endif %}
-  
+  <!-- 
+  The page header section contains the title, subtitle, and optional banner image.
+  If a banner_image is specified in the front matter, it will be displayed here.
+  -->
   <header class="page-header">
-    <h1 class="page-title">{{ page.title }}</h1>
-    {% if page.subtitle %}
-    <p class="page-subtitle">{{ page.subtitle }}</p>
-    {% endif %}
-  </header>
-
-  <div class="page-content">
-    {{ content }}
-  </div>
-
-  <footer class="page-footer">
-    {% if page.last_modified_at %}
-    <div class="page-meta">
-      <p>Last updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%B %d, %Y" }}</time></p>
+    {% if page.banner_image %}
+    <div class="banner-image">
+      <img src="{{ page.banner_image | relative_url }}" alt="{{ page.title }}" />
     </div>
     {% endif %}
-  </footer>
+    
+    <div class="page-header-content">
+      <h1 class="page-title">{{ page.title }}</h1>
+      {% if page.subtitle %}
+      <h2 class="page-subtitle">{{ page.subtitle }}</h2>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- 
+  The page content section contains the main content of the page.
+  This content comes from the markdown or HTML in your page files.
+  -->
+  <div class="page-content-wrapper">
+    {{ content }}
+  </div>
 </article>
-
-<style>
-  /* Page layout styles */
-  .page {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .header-image {
-    margin: -2rem -2rem 2rem;
-    height: 40vh;
-    min-height: 300px;
-    max-height: 500px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .header-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .bw-filter {
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-  }
-
-  .page-header {
-    margin-bottom: 3rem;
-    text-align: center;
-  }
-
-  .page-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
-  }
-
-  .page-subtitle {
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: #666;
-  }
-
-  .page-content {
-    font-size: 1.1rem;
-    line-height: 1.8;
-  }
-
-  .page-content p {
-    margin-bottom: 1.5rem;
-  }
-
-  .page-content h2 {
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-  }
-
-  .page-content h3 {
-    margin-top: 2rem;
-    margin-bottom: 0.8rem;
-    font-size: 1.5rem;
-  }
-
-  .page-footer {
-    margin-top: 4rem;
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
-    font-size: 0.9rem;
-    color: #666;
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .header-image {
-      margin: -1rem -1rem 1.5rem;
-      min-height: 200px;
-    }
-
-    .page-title {
-      font-size: 2rem;
-    }
-
-    .page-content {
-      font-size: 1rem;
-    }
-  }
-</style>
