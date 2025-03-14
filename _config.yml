@@ -1,91 +1,63 @@
+# _config.yml
+# This is the main configuration file for your Jekyll site
+# It defines site-wide variables and settings that Jekyll uses to generate your static site
+# Modify these settings to customize your portfolio website
+
 # Site settings
-title: "Firecracker280 - Portfolio"
-description: "Personal portfolio website showcasing projects, writings, and journal entries"
-baseurl: "/Isamu"  # Subpath of your site (matches repo name)
-url: "https://firecracker280.github.io"  # GitHub Pages domain
-email: your-email@example.com
-github_username: firecracker280
-linkedin_username: yourusername
-twitter_username: yourusername
+title: Isamu Thung # Your name or the title of your portfolio
+email: example@gmail.com # Your email address
+description: >- # This means to ignore newlines until the next key
+  A portfolio website showcasing my work, writings, and projects.
+  Built with Jekyll and hosted on GitHub Pages.
+baseurl: "/Isamu" # The subpath of your site, e.g. /blog
+url: "https://firecracker280.github.io" # The base hostname & protocol for your site, e.g. http://example.com
+twitter_username: yourusername # Your Twitter username
+github_username:  yourusername # Your GitHub username
+linkedin_username: yourusername # Your LinkedIn username
 
 # Build settings
 markdown: kramdown
+permalink: pretty
 highlighter: rouge
-permalink: /:collection/:title/
-exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'node_modules', 'vendor']
 
-# Collections
+# Collections settings
 collections:
   projects:
     output: true
-    permalink: /projects/:title/
+    permalink: /projects/:path/
   writings:
     output: true
-    permalink: /writings/:title/
-  journal:
-    output: true
-    permalink: /journal/:title/
+    permalink: /writings/:path/
 
-# Defaults (Front Matter)
+# Default front matter settings
 defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
   - scope:
       path: ""
       type: "projects"
     values:
       layout: "project"
-      comments: false
-      share: true
-      related: true
   - scope:
       path: ""
       type: "writings"
     values:
       layout: "post"
-      comments: true
-      share: true
-      related: true
-  - scope:
-      path: ""
-      type: "journal"
-    values:
-      layout: "journal"
-      comments: false
-      share: false
-      related: false
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "page"
   - scope:
       path: ""
     values:
       layout: "default"
 
-# Plugins (Only GitHub Pages Supported Plugins)
-plugins:
-  - jekyll-paginate
-  - jekyll-seo-tag
-  - jekyll-sitemap
-  - jekyll-feed
-
-# Pagination
-paginate: 10
-paginate_path: "/page:num/"
-
-# Sass (CSS Preprocessing)
-sass:
-  sass_dir: _sass
-  style: compressed
-
-# SEO Settings
-twitter:
-  username: yourusername
-  card: summary_large_image
-logo: "/assets/images/logo.png"
-social:
-  name: "Firecracker280"
-  links:
-    - https://twitter.com/yourusername
-    - https://www.linkedin.com/in/yourusername
-    - https://github.com/firecracker280
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
+  - gemfiles
+  - README.md
