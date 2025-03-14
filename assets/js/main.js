@@ -15,8 +15,11 @@
  * - Ensure all code is wrapped in the DOMContentLoaded event listener
  * - Use comments to explain complex functionality
  */
+/**
+ * main.js
+ * This is the main JavaScript file for the portfolio website.
+ */
 
-// Wait for the DOM to be fully loaded before executing JavaScript
 document.addEventListener('DOMContentLoaded', function() {
   
   // Sidebar toggle functionality
@@ -41,37 +44,72 @@ document.addEventListener('DOMContentLoaded', function() {
   function setupSidebar() {
     const hamburgerToggle = document.querySelector('.hamburger-toggle');
     const sidebar = document.querySelector('.site-sidebar');
-    const overlay = document.createElement('div');
-    
-    // Create overlay element for expanded sidebar
-    overlay.classList.add('menu-overlay');
-    document.body.appendChild(overlay);
+    const mainContent = document.querySelector('.main-content');
     
     // Toggle sidebar when hamburger button is clicked
     if (hamburgerToggle) {
       hamburgerToggle.addEventListener('click', function() {
-        sidebar.classList.toggle('expanded');
+        sidebar.classList.toggle('active');
         hamburgerToggle.classList.toggle('active');
-        overlay.classList.toggle('active');
-        document.body.classList.toggle('sidebar-open');
+        
+        // Add class to main content for sliding effect
+        if (mainContent) {
+          mainContent.classList.toggle('shifted');
+        }
+        
+        // Toggle body class to prevent scrolling when menu is open
+        document.body.classList.toggle('menu-open');
       });
     }
     
-    // Close sidebar when overlay is clicked
-    overlay.addEventListener('click', function() {
-      sidebar.classList.remove('expanded');
-      hamburgerToggle.classList.remove('active');
-      overlay.classList.remove('active');
-      document.body.classList.remove('sidebar-open');
+    // Close sidebar when ESC key is pressed
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && sidebar.classList.contains('active')) {
+        sidebar.classList.remove('active');
+        hamburgerToggle.classList.remove('active');
+        if (mainContent) {
+          mainContent.classList.remove('shifted');
+        }
+        document.body.classList.remove('menu-open');
+      }
     });
     
-    // Close sidebar when window is resized to desktop size
-    window.addEventListener('resize', function() {
-      if (window.innerWidth >= 992) { // Large breakpoint
-        // You can decide whether to auto-collapse on desktop or keep it as is
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(e) {
+      // Only do this on mobile/tablet
+      if (window.innerWidth < 992) {
+        // Check if sidebar is active and click is outside sidebar and hamburger
+        if (sidebar.classList.contains('active') && 
+            !sidebar.contains(e.target) && 
+            !hamburgerToggle.contains(e.target)) {
+          sidebar.classList.remove('active');
+          hamburgerToggle.classList.remove('active');
+          if (mainContent) {
+            mainContent.classList.remove('shifted');
+          }
+          document.body.classList.remove('menu-open');
+        }
       }
     });
   }
+  
+  // The rest of your JavaScript remains unchanged
+  function setupSmoothScrolling() {
+    // Your existing code
+  }
+  
+  function setupImageGallery() {
+    // Your existing code
+  }
+  
+  function setupFormValidation() {
+    // Your existing code
+  }
+  
+  function setupAnimations() {
+    // Your existing code
+  }
+});
   
   /**
    * Sets up smooth scrolling for anchor links
