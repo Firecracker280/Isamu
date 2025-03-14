@@ -1,19 +1,76 @@
-// Main SCSS file that imports all partials
-// Portfolio Theme - Black and White Minimalist Design
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
 
-// Variables
-@import "variables";
+/*
+main.scss
+This is the main stylesheet that imports all the SASS partials and compiles them into a single CSS file.
+Jekyll processes this file and outputs it as assets/css/main.css.
 
-// Base styles
-@import "base";
+This file controls:
+1. The order of SASS partial imports
+2. Any global variables that need to be accessible to all partials
+3. Any direct CSS that doesn't fit into the partials
 
-// Typography
-@import "typography";
+To modify the styling:
+- For base elements and resets: edit _sass/_base.scss
+- For layout and page structure: edit _sass/_layout.scss
+- For sidebar styling: edit _sass/_sidebar.scss
+- For typography and text styling: edit _sass/_typography.scss
+- For direct CSS that doesn't fit elsewhere: add it at the bottom of this file
+*/
 
-// Layout
-@import "layout";
+// Import SASS partials
+@import 
+  "base",
+  "typography",
+  "layout",
+  "sidebar"
+;
 
-// Components
-@import "sidebar";
-@import "animations";
-@import "projects";
+// Any additional CSS that doesn't fit in the partials can be added here
+// This is processed last and will override any previous styles
+
+// Animation classes
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Print styles
+@media print {
+  .site-sidebar,
+  .site-header,
+  .site-footer {
+    display: none;
+  }
+  
+  .content {
+    padding-left: 0 !important;
+    margin: 0;
+    width: 100%;
+  }
+  
+  a {
+    text-decoration: underline;
+    color: #000 !important;
+  }
+  
+  img {
+    max-width: 500px;
+  }
+}
