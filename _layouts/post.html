@@ -1,234 +1,97 @@
 ---
 layout: default
 ---
+<!--
+post.html
+This layout is used for blog posts and writings.
+It inherits from default.html and adds post-specific styling and structure.
+To use this layout, set "layout: post" in the front matter of your content files.
+
+You can customize this layout by:
+1. Adding post-specific metadata in the front matter (date, author, categories, tags)
+2. Adding a featured image in the front matter (featured_image: /path/to/image.jpg)
+3. Modifying the post title and excerpt in the front matter
+-->
+
 <article class="post">
-  {% if page.header_image %}
-  <div class="header-image">
-    <img src="{{ page.header_image | relative_url }}" alt="{{ page.title }}" class="bw-filter">
-  </div>
-  {% endif %}
-  
+  <!-- 
+  The post header section contains the title, date, author, and optional featured image.
+  If a featured_image is specified in the front matter, it will be displayed here.
+  -->
   <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.featured_image %}
+    <div class="featured-image">
+      <img src="{{ page.featured_image | relative_url }}" alt="{{ page.title }}" />
+    </div>
+    {% endif %}
     
-    <div class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+    <div class="post-header-content">
+      <h1 class="post-title">{{ page.title }}</h1>
       
-      {% if page.categories.size > 0 %}
-      <span class="post-categories">
-        in 
-        {% for category in page.categories %}
-        <a href="{{ site.baseurl }}/categories/{{ category | slugify }}">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
-        {% endfor %}
-      </span>
-      {% endif %}
-      
-      {% if page.author %}
-      <span class="post-author">by {{ page.author }}</span>
-      {% endif %}
+      <div class="post-meta">
+        <!-- Display the post date in a readable format -->
+        {% if page.date %}
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%B %-d, %Y" }}
+        </time>
+        {% endif %}
+        
+        <!-- Display the author if specified -->
+        {% if page.author %}
+        <span class="post-author">by {{ page.author }}</span>
+        {% endif %}
+        
+        <!-- Display categories if any -->
+        {% if page.categories.size > 0 %}
+        <span class="post-categories">
+          in 
+          {% for category in page.categories %}
+          <a href="{{ site.baseurl }}/categories/{{ category | slugify }}/">{{ category }}</a>{% unless forloop.last %}, {% endunless %}
+          {% endfor %}
+        </span>
+        {% endif %}
+      </div>
     </div>
   </header>
 
+  <!-- 
+  The post content section contains the main content of the post.
+  This content comes from the markdown or HTML in your post files.
+  -->
   <div class="post-content">
     {{ content }}
   </div>
-
+  
+  <!-- 
+  The post footer section contains tags and sharing options.
+  -->
   <footer class="post-footer">
     {% if page.tags.size > 0 %}
     <div class="post-tags">
-      <h3>Tags</h3>
+      <h3>Tags:</h3>
       <ul>
         {% for tag in page.tags %}
-        <li><a href="{{ site.baseurl }}/tags/{{ tag | slugify }}">{{ tag }}</a></li>
+        <li><a href="{{ site.baseurl }}/tags/{{ tag | slugify }}/">{{ tag }}</a></li>
         {% endfor %}
       </ul>
     </div>
     {% endif %}
     
+    <!-- 
+    You can add sharing buttons or related posts here.
+    This is just a placeholder that you can customize.
+    -->
     <div class="post-navigation">
-      {% if page.previous %}
-      <a href="{{ page.previous.url | relative_url }}" class="prev-post">
-        <span class="nav-label">Previous</span>
-        <span class="post-title">{{ page.previous.title }}</span>
-      </a>
-      {% endif %}
-      
-      {% if page.next %}
-      <a href="{{ page.next.url | relative_url }}" class="next-post">
-        <span class="nav-label">Next</span>
-        <span class="post-title">{{ page.next.title }}</span>
-      </a>
-      {% endif %}
+      <div class="post-navigation-previous">
+        {% if page.previous.url %}
+        <a href="{{ page.previous.url | relative_url }}" title="{{ page.previous.title }}">&laquo; Previous</a>
+        {% endif %}
+      </div>
+      <div class="post-navigation-next">
+        {% if page.next.url %}
+        <a href="{{ page.next.url | relative_url }}" title="{{ page.next.title }}">Next &raquo;</a>
+        {% endif %}
+      </div>
     </div>
   </footer>
 </article>
-
-<style>
-  /* Post layout styles */
-  .post {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .header-image {
-    margin: -2rem -2rem 2rem;
-    height: 40vh;
-    min-height: 300px;
-    max-height: 500px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .header-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .bw-filter {
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-  }
-
-  .post-header {
-    margin-bottom: 3rem;
-  }
-
-  .post-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-
-  .post-meta {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1rem;
-  }
-
-  .post-categories a, .post-tags a {
-    color: #333;
-    text-decoration: none;
-    border-bottom: 1px solid #ccc;
-  }
-
-  .post-categories a:hover, .post-tags a:hover {
-    border-bottom-color: #333;
-  }
-
-  .post-content {
-    font-size: 1.1rem;
-    line-height: 1.8;
-  }
-
-  .post-content p {
-    margin-bottom: 1.5rem;
-  }
-
-  .post-content h2 {
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    font-size: 1.8rem;
-  }
-
-  .post-content h3 {
-    margin-top: 2rem;
-    margin-bottom: 0.8rem;
-    font-size: 1.5rem;
-  }
-
-  .post-footer {
-    margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid #eee;
-  }
-
-  .post-tags h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .post-tags ul {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-  }
-
-  .post-tags li {
-    background-color: #f5f5f5;
-    padding: 0.3rem 0.8rem;
-    border-radius: 3px;
-    font-size: 0.8rem;
-  }
-
-  .post-tags a {
-    text-decoration: none;
-    color: #333;
-  }
-
-  .post-navigation {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
-
-  .prev-post, .next-post {
-    max-width: 45%;
-    text-decoration: none;
-    color: #333;
-  }
-
-  .prev-post {
-    text-align: left;
-  }
-
-  .next-post {
-    text-align: right;
-  }
-
-  .nav-label {
-    display: block;
-    font-size: 0.8rem;
-    color: #666;
-    margin-bottom: 0.3rem;
-  }
-
-  .post-navigation .post-title {
-    font-size: 1rem;
-    margin: 0;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.2s;
-  }
-
-  .post-navigation a:hover .post-title {
-    border-bottom-color: #333;
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .header-image {
-      margin: -1rem -1rem 1.5rem;
-      min-height: 200px;
-    }
-
-    .post-title {
-      font-size: 2rem;
-    }
-
-    .post-content {
-      font-size: 1rem;
-    }
-
-    .post-navigation {
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .prev-post, .next-post {
-      max-width: 100%;
-    }
-  }
-</style>
