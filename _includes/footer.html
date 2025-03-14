@@ -1,95 +1,13 @@
 <!--
 footer.html
-This file contains the footer section that appears at the bottom of each page.
-It's included in the default layout and provides site-wide footer elements.
-
-This file controls:
-1. Copyright information
-2. Social media links
-3. Secondary navigation
-4. Any other footer elements like newsletter signup
+This file contains only the copyright information while removing all other footer elements.
 -->
 
 <footer class="site-footer">
   <div class="footer-container">
-    <!-- 
-    Main footer content with multiple columns for different types of information.
-    You can customize this structure based on your needs.
-    -->
-    <div class="footer-content">
-      <!-- About column with brief site description -->
-      <div class="footer-column footer-about">
-        <h3 class="footer-heading">About</h3>
-        <p>{{ site.description }}</p>
-      </div>
-      
-      <!-- Quick links column for secondary navigation -->
-      <div class="footer-column footer-links">
-        <h3 class="footer-heading">Quick Links</h3>
-        <ul class="footer-nav">
-          <li><a href="{{ site.baseurl }}/">Home</a></li>
-          <li><a href="{{ site.baseurl }}/about/">About</a></li>
-          <li><a href="{{ site.baseurl }}/projects/">Projects</a></li>
-          <li><a href="{{ site.baseurl }}/writings/">Writings</a></li>
-          <li><a href="{{ site.baseurl }}/journal/">Journal</a></li>
-          <li><a href="{{ site.baseurl }}/contact/">Contact</a></li>
-        </ul>
-      </div>
-      
-      <!-- Social media links column -->
-      <div class="footer-column footer-social">
-        <h3 class="footer-heading">Connect</h3>
-        <ul class="social-links">
-          {% if site.github_username %}
-          <li>
-            <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">
-              GitHub
-            </a>
-          </li>
-          {% endif %}
-          
-          {% if site.twitter_username %}
-          <li>
-            <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">
-              Twitter
-            </a>
-          </li>
-          {% endif %}
-          
-          {% if site.linkedin_username %}
-          <li>
-            <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">
-              LinkedIn
-            </a>
-          </li>
-          {% endif %}
-          
-          <!-- Add more social platforms as needed -->
-        </ul>
-      </div>
-      
-      <!-- Optional newsletter signup or contact form -->
-      <div class="footer-column footer-newsletter">
-        <h3 class="footer-heading">Stay Updated</h3>
-        <p>Subscribe to receive updates about new projects and writings.</p>
-        <!-- 
-        This is a placeholder for a newsletter signup form.
-        Replace with your actual newsletter service code.
-        -->
-        <form class="newsletter-form" action="#" method="post">
-          <input type="email" name="email" placeholder="Your email address" required>
-          <button type="submit">Subscribe</button>
-        </form>
-      </div>
-    </div>
-    
-    <!-- 
-    Copyright bar at the bottom of the footer.
-    Automatically updates the year.
-    -->
+    <!-- Copyright bar at the bottom of the footer -->
     <div class="copyright-bar">
       <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
-      <!-- You can add additional links here like Privacy Policy, Terms of Service, etc. -->
     </div>
   </div>
 </footer>
