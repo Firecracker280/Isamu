@@ -19,8 +19,8 @@
 // Wait for the DOM to be fully loaded before executing JavaScript
 document.addEventListener('DOMContentLoaded', function() {
   
-  // Mobile sidebar toggle functionality
-  setupMobileNav();
+  // Sidebar toggle functionality
+  setupSidebar();
   
   // Smooth scrolling for anchor links
   setupSmoothScrolling();
@@ -35,22 +35,23 @@ document.addEventListener('DOMContentLoaded', function() {
   setupAnimations();
   
   /**
-   * Sets up mobile navigation functionality
-   * Controls the sidebar toggle button and overlay
+   * Sets up sidebar functionality
+   * Controls the sidebar toggle button and animation
    */
-  function setupMobileNav() {
-    const menuToggle = document.querySelector('.menu-toggle');
+  function setupSidebar() {
+    const hamburgerToggle = document.querySelector('.hamburger-toggle');
     const sidebar = document.querySelector('.site-sidebar');
     const overlay = document.createElement('div');
     
-    // Create overlay element for mobile menu
+    // Create overlay element for expanded sidebar
     overlay.classList.add('menu-overlay');
     document.body.appendChild(overlay);
     
-    // Toggle sidebar when menu button is clicked
-    if (menuToggle) {
-      menuToggle.addEventListener('click', function() {
-        sidebar.classList.toggle('active');
+    // Toggle sidebar when hamburger button is clicked
+    if (hamburgerToggle) {
+      hamburgerToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('expanded');
+        hamburgerToggle.classList.toggle('active');
         overlay.classList.toggle('active');
         document.body.classList.toggle('sidebar-open');
       });
@@ -58,7 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Close sidebar when overlay is clicked
     overlay.addEventListener('click', function() {
-      sidebar.classList.remove('active');
+      sidebar.classList.remove('expanded');
+      hamburgerToggle.classList.remove('active');
       overlay.classList.remove('active');
       document.body.classList.remove('sidebar-open');
     });
@@ -66,9 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close sidebar when window is resized to desktop size
     window.addEventListener('resize', function() {
       if (window.innerWidth >= 992) { // Large breakpoint
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.classList.remove('sidebar-open');
+        // You can decide whether to auto-collapse on desktop or keep it as is
       }
     });
   }
