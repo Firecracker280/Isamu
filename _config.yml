@@ -12,7 +12,7 @@ description: >- # This means to ignore newlines until the next key
 baseurl: "/Isamu" # The subpath of your site, e.g. /blog
 url: "https://firecracker280.github.io" # The base hostname & protocol for your site, e.g. http://example.com
 twitter_username: yourusername # Your Twitter username
-github_username:  yourusername # Your GitHub username
+github_username: yourusername # Your GitHub username
 linkedin_username: yourusername # Your LinkedIn username
 
 # Build settings
@@ -57,7 +57,6 @@ exclude:
   - Gemfile.lock
   - node_modules
   - vendor
-  - .sass-cache
   - .jekyll-cache
   - gemfiles
   - README.md
