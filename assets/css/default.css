@@ -1,4 +1,5 @@
-/* Base Styles */
+/* DEFAULT PAGE STYLE */
+
 * {
     margin: 0;
     padding: 0;
@@ -104,5 +105,208 @@ body {
     
     .portfolio-title {
         font-size: 1.2rem;
+    }
+}
+
+/* SIDEBAR STYLE */
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Vertical Bar - Always Visible */
+.vertical-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px; /* Wider vertical bar */
+    height: 100%;
+    background-color: #1a1a1a;
+    z-index: 995;
+}
+
+/* Sidebar Toggle Button */
+.sidebar-toggle {
+    position: absolute;
+    top: 30px;
+    left: 22px; /* Centered in vertical bar */
+    width: 36px; /* Larger icon */
+    height: 30px; /* Larger icon */
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.toggle-icon {
+    display: block;
+    width: 100%;
+    height: 2px; /* Thinner lines */
+    background-color: #fff;
+    transition: all 0.4s ease;
+}
+
+/* Toggle button animation for open state */
+.sidebar-toggle.active .toggle-icon:nth-child(1) {
+    transform: translateY(14px) rotate(45deg); /* (30px - 2px) ÷ 2 = 14px */
+}
+
+.sidebar-toggle.active .toggle-icon:nth-child(2) {
+    opacity: 0;
+}
+
+.sidebar-toggle.active .toggle-icon:nth-child(3) {
+    transform: translateY(-14px) rotate(-45deg); /* (30px - 2px) ÷ 2 = 14px */
+}
+
+/* Sidebar Styles - Expands from vertical bar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 80px; /* Start at vertical bar width */
+    width: calc(80vw - 80px); /* 4/5ths of screen minus vertical bar */
+    height: 100%;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    z-index: 990;
+    transform: translateX(-100%); /* Start off-screen */
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); /* Slower animation */
+    overflow-y: auto;
+    padding: 80px 40px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active {
+    transform: translateX(0); /* Slide in */
+}
+
+/* Navigation Links - Horizontal Layout */
+.sidebar-nav {
+    margin-bottom: 100px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav-links li {
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+.nav-links li.nav-dot {
+    font-size: 1.2rem;
+    opacity: 0.5;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 300;
+    position: relative;
+    display: inline-block;
+    transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+    opacity: 0.7;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -5px;
+    left: 0;
+    background-color: #ffffff;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Centered Feature Text */
+.sidebar-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 0 20px;
+}
+
+.feature-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    line-height: 1.6;
+    text-align: center;
+    font-weight: 400;
+    max-width: 800px;
+    opacity: 0.9;
+}
+
+/* Content Overlay */
+.content-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 980;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.content-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Main Content Area */
+.main-content {
+    margin-left: 80px; /* Match vertical bar width */
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); /* Match sidebar speed */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .vertical-bar {
+        width: 60px; /* Slightly narrower on mobile */
+    }
+    
+    .sidebar-toggle {
+        left: 12px; /* Re-center in narrower bar */
+    }
+    
+    .sidebar {
+        left: 60px; /* Match vertical bar width */
+        width: calc(90vw - 60px); /* Wider on mobile */
+        padding: 70px 20px 30px;
+    }
+    
+    .feature-text {
+        font-size: 1.4rem;
+    }
+    
+    .main-content {
+        margin-left: 60px; /* Match vertical bar width */
     }
 }
