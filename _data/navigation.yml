@@ -1,35 +1,21 @@
-# Navigation configuration
-# This file defines the navigation structure for the portfolio website
-# It's used to generate the navigation menu in the sidebar and other navigation elements
-#
-# This file controls:
-# 1. The main navigation links in the sidebar
-# 2. The order of navigation items
-# 3. The text and URLs for each navigation item
-#
-# To modify the navigation:
-# - Add, remove, or reorder items in the 'main' list
-# - Each item needs a title and url
-# - Optionally add a target attribute for external links
 
-# Main navigation items
-# These appear in the sidebar and potentially other navigation areas
 main:
   
-  - title: About
-    url: /about/
-  
-  - title: Projects
-    url: /projects/
   
   - title: Writings
     url: /writings/
   
   - title: Journal
     url: /journal/
+
+
+  - title: Projects
+    url: /projects/
+
+   - title: About
+    url: /about/
+
   
   - title: Contact
     url: /contact/
 
-# You can add additional navigation sections as needed
-# For example, a footer navigation or social links section
