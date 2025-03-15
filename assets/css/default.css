@@ -13,19 +13,43 @@ body {
     line-height: 1.6;
 }
 
+
+/* Portfolio Grid Layout */
+
 /* Portfolio Grid Layout */
 .portfolio-container {
-    width: 100%;
+    width: calc(100% - 80px); /* Subtracts sidebar width */
+    margin-left: 80px; /* Ensures content starts at the right of sidebar */
     padding: 0;
     max-width: 100%;
 }
 
+/* Ensuring grid alignment */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0;
     width: 100%;
 }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .portfolio-container {
+        width: 100%; /* Full width for smaller screens */
+        margin-left: 0; /* Sidebar likely collapses or moves */
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+    
+    .portfolio-title {
+        font-size: 1.2rem;
+    }
+}
+
 
 /* Portfolio Items */
 .portfolio-item {
@@ -99,9 +123,7 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .portfolio-grid {
-        grid-template-columns: 1fr;
-    }
+  
     
     .portfolio-title {
         font-size: 1.2rem;
@@ -110,7 +132,6 @@ body {
 
 /* SIDEBAR STYLE */
 
-/* Base Styles */
 * {
     margin: 0;
     padding: 0;
