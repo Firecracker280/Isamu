@@ -5,15 +5,7 @@ permalink: /about/
 banner_image: /assets/images/about-banner.jpg
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Portfolio</title>
-    <link rel="stylesheet" href="about.css">
-</head>
-<body>
+<link rel="stylesheet" href="{{ '/assets/css/about.css' | relative_url }}">
     <main>
         <!-- Top Section with Hello and Image -->
         <section class="top-section">
@@ -105,6 +97,4 @@ banner_image: /assets/images/about-banner.jpg
             </div>
         </section>
     </main>
-    <script src="about.js"></script>
-</body>
-</html>
+<script src="{{ '/assets/js/about.js' | relative_url }}"></script>
