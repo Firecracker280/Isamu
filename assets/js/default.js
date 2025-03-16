@@ -31,15 +31,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
-
 //SIDEBAR
-
 document.addEventListener('DOMContentLoaded', function() {
     // Get elements
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebar = document.getElementById('sidebar');
     const contentOverlay = document.getElementById('contentOverlay');
     const body = document.body;
+    
+    // Create overlay if it doesn't exist
+    if (!contentOverlay) {
+        const newOverlay = document.createElement('div');
+        newOverlay.id = 'contentOverlay';
+        newOverlay.className = 'content-overlay';
+        document.body.appendChild(newOverlay);
+        contentOverlay = newOverlay;
+    }
     
     // Function to toggle sidebar
     function toggleSidebar() {
@@ -77,12 +84,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // Any resize-specific adjustments can go here
     });
     
-    // Optional: Add smooth scroll to navigation links
+    // Navigation links with smooth transition
     document.querySelectorAll('.nav-links a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            // Close sidebar when clicking navigation
+            // Only if sidebar is active
             if (sidebar.classList.contains('active')) {
+                e.preventDefault(); // Prevent immediate navigation
+                const destination = this.getAttribute('href');
+                
+                // Close sidebar with animation
                 toggleSidebar();
+                
+                // Wait for the sidebar transition to complete before navigating
+                // Duration matches the CSS transition time (0.8s)
+                setTimeout(function() {
+                    window.location.href = destination;
+                }, 800);
             }
         });
     });
