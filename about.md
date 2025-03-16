@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Creative Portfolio
-permalink: /portfolio/
-banner_image: /assets/images/portfolio-banner.jpg
+title: About
+permalink: /about/
+banner_image: /assets/images/about-banner.jpg
 ---
 <!-- Custom CSS for just this page -->
 <link rel="stylesheet" href="{{ '/assets/css/about.css' | relative_url }}">
