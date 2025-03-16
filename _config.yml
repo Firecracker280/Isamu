@@ -22,30 +22,37 @@ highlighter: rouge
 
 # Collections settings
 collections:
-  projects:
-    output: true
-    permalink: /projects/:path/
+  
   writings:
     output: true
     permalink: /writings/:path/
+     
+  journal:
+    output: true
+    permalink: /journal/:path/
+
+   projects:
+    output: true
+    permalink: /projects/:path/
+    
 
 # Default front matter settings
 defaults:
   - scope:
       path: ""
-      type: "posts"
+      type: "writings"
     values:
-      layout: "post"
+      layout: "writings"
+  - scope:
+      path: ""
+      type: "journal"
+    values:
+      layout: "journal"
   - scope:
       path: ""
       type: "projects"
     values:
-      layout: "project"
-  - scope:
-      path: ""
-      type: "writings"
-    values:
-      layout: "post"
+      layout: "projects"
   - scope:
       path: ""
     values:
