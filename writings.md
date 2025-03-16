@@ -14,8 +14,8 @@ banner_image: /assets/images/writings-banner.jpg
   </section>
   
   <section class="content">
-    <h1>Articles.</h1>
-    <ul class="articles-list">
+    <h1>writings</h1>
+    <ul class="writings-list">
       <li><a href="/articles/minimalist-design-architecture">The Principles of Minimalist Design in Modern Architecture</a></li>
       <li><a href="/articles/form-follows-function">Form Follows Function: A Study in Product Design</a></li>
       <li><a href="/articles/negative-space-ui-design">Negative Space and Visual Hierarchy in UI Design</a></li>
