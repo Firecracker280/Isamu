@@ -1,44 +1,66 @@
 <!DOCTYPE html>
-<!--
-default.html
-This is the main layout template that all pages will inherit from.
-It defines the basic HTML structure and includes common elements like header, footer, and sidebar.
-To use this layout, set "layout: default" in the front matter of your content files.
--->
 <html lang="en">
-  {% include head.html %}
-  <body class="{% if page.layout %}{{ page.layout }}{% endif %}{% if page.class %} {{ page.class }}{% endif %}">
-    <!-- 
-    The sidebar contains navigation and site identity.
-    It's positioned on the left side of the screen and is always visible on desktop.
-    On mobile, it can be toggled with the menu button.
-    -->
-    {% include sidebar.html %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     
-    <main class="content">
-      <!-- 
-      The header contains the page title and any page-specific navigation.
-      It's included on every page but can be customized per page type.
-      -->
-      {% include header.html %}
-      
-      <!-- 
-      This is where the main content of each page will be inserted.
-      The content comes from the markdown or HTML files in your project.
-      -->
-      <div class="page-content">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
+    
+    <!-- Additional custom head content -->
+    {% if page.custom_css %}
+        {% for stylesheet in page.custom_css %}
+        <link rel="stylesheet" href="{{ '/assets/css/' | append: stylesheet | append: '.css' | relative_url }}">
+        {% endfor %}
+    {% endif %}
+</head>
+<body>
+    <!-- Vertical Bar with Toggle Button -->
+    <div class="vertical-bar" id="verticalBar">
+        <div class="sidebar-toggle" id="sidebarToggle">
+            <span class="toggle-icon"></span>
+            <span class="toggle-icon"></span>
+            <span class="toggle-icon"></span>
+        </div>
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav-links">
+                <li><a href="writings.html">Writings</a></li>
+                <li class="nav-dot">•</li>
+                <li><a href="journal.html">Journal</a></li>
+                <li class="nav-dot">•</li>
+                <li><a href="projects.html">Projects</a></li>
+                <li class="nav-dot">•</li>
+                <li><a href="about.html">About</a></li>
+                <li class="nav-dot">•</li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-content">
+            <p class="feature-text">I am a Paris-based designer & art director with a focus on user experience and interaction. I create & build digital products for people and brands that leave lasting impressions and meaningful connections.</p>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="main-content">
         {{ content }}
-      </div>
-      
-      <!-- 
-      The footer contains copyright information, social links, and other site-wide footer elements.
-      -->
-      {% include footer.html %}
     </main>
     
-    <!-- 
-    JavaScript is included at the end of the body for better page load performance.
-    -->
+    <!-- Scripts -->
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-  </body>
+    {% if page.custom_js %}
+        {% for js_file in page.custom_js %}
+        <script src="{{ '/assets/js/' | append: js_file | append: '.js' | relative_url }}"></script>
+        {% endfor %}
+    {% endif %}
+</body>
 </html>
