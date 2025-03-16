@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Add scroll reveal effect to articles
-    const articleItems = document.querySelectorAll('.articles-list li');
+    const articleItems = document.querySelectorAll('.writings-list li');
     
     const fadeInOnScroll = () => {
         articleItems.forEach(item => {
