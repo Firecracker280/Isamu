@@ -11,7 +11,7 @@ banner_image: /assets/images/about-banner.jpg
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creative Portfolio</title>
-    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="about.css">
 </head>
 <body>
     <main>
@@ -105,6 +105,6 @@ banner_image: /assets/images/about-banner.jpg
             </div>
         </section>
     </main>
-    <script src="portfolio.js"></script>
+    <script src="about.js"></script>
 </body>
 </html>
