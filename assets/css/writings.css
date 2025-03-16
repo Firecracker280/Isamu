@@ -48,13 +48,13 @@ h1 {
     max-width: 900px;
 }
 
-.articles-list li {
+.writings-list li {
     margin-bottom: 14px; /* Reduced from 24px to make items closer */
     position: relative;
     padding-left: 16px; /* Reduced padding */
 }
 
-.articles-list li::before {
+.writings-list li::before {
     content: "•";
     position: absolute;
     left: 0;
@@ -62,14 +62,14 @@ h1 {
     font-size: 0.8rem; /* Smaller bullet */
 }
 
-.articles-list a {
+.writings-list a {
     color: #333;
     text-decoration: none;
     font-size: 1rem; /* Reduced font size from 1.25rem */
     transition: color 0.3s ease;
 }
 
-.articles-list a:hover {
+.writings-list a:hover {
     color: #888;
 }
 
@@ -84,7 +84,7 @@ h1 {
         margin-bottom: 40px;
     }
     
-    .articles-list a {
+    .writings-list a {
         font-size: 0.9rem;
     }
 }
