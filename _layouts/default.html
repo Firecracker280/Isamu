@@ -7,8 +7,7 @@
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
     
     <!-- Stylesheets --> 
-    <link rel="stylesheet" href="assets/css/default.css">
-    
+    <link rel="stylesheet" href="{{ '/assets/css/default.css' | relative_url }}">
     
     <!-- Favicon -->
     <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
@@ -32,19 +31,17 @@
     
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
-        <nav class="sidebar-nav">
-            <ul class="nav-links">
-                <li><a href="writings.html">Writings</a></li>
-                <li class="nav-dot">•</li>
-                <li><a href="journal.html">Journal</a></li>
-                <li class="nav-dot">•</li>
-                <li><a href="projects.html">Projects</a></li>
-                <li class="nav-dot">•</li>
-                <li><a href="about.html">About</a></li>
-                <li class="nav-dot">•</li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <ul class="nav-links">
+            <li><a href="{{ '/writings/' | relative_url }}">Writings</a></li>
+            <li class="nav-dot">•</li>
+            <li><a href="{{ '/journal/' | relative_url }}">Journal</a></li>
+            <li class="nav-dot">•</li>
+            <li><a href="{{ '/projects/' | relative_url }}">Projects</a></li>
+            <li class="nav-dot">•</li>
+            <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+            <li class="nav-dot">•</li>
+            <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+        </ul>
         
         <div class="sidebar-content">
             <p class="feature-text">I am a Paris-based designer & art director with a focus on user experience and interaction. I create & build digital products for people and brands that leave lasting impressions and meaningful connections.</p>
@@ -57,7 +54,7 @@
     </main>
     
     <!-- Scripts -->
-    <script src="assets/js/default.js"></script>
+    <script src="{{ '/assets/js/default.js' | relative_url }}"></script>
 
     {% if page.custom_js %}
         {% for js_file in page.custom_js %}
