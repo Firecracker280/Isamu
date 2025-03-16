@@ -14,7 +14,7 @@ banner_image: /assets/images/writings-banner.jpg
   </section>
   
   <section class="content">
-    <h1>writings</h1>
+    <h1>Writings</h1>
     <ul class="writings-list">
       <li><a href="/articles/minimalist-design-architecture">The Principles of Minimalist Design in Modern Architecture</a></li>
       <li><a href="/articles/form-follows-function">Form Follows Function: A Study in Product Design</a></li>
