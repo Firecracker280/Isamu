@@ -7,9 +7,12 @@ banner_image: /assets/images/about-banner.jpg
 <!-- Custom CSS for just this page -->
 <link rel="stylesheet" href="{{ '/assets/css/about.css' | relative_url }}">
 <main>
-  
+
   <section class="content">
     <h1>Hello<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="asterisk-link">*</a></h1>
+    <div class="hello-image">
+  <img src="/Isamu/assets/images/your-image.jpg" alt="Profile image">
+</div>
     <div class="section">
       <h2>About.</h2>
       <p class="fancy-text">Through a process of <em>research, concept development & design</em>, I help build thoughtful interactive experiences for digital brands.</p>
