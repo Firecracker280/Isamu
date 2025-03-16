@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get elements
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebar = document.getElementById('sidebar');
-    const contentOverlay = document.getElementById('contentOverlay');
+    let contentOverlay = document.getElementById('contentOverlay'); // Changed from const to let
     const body = document.body;
     
     // Create overlay if it doesn't exist
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             body.style.overflow = 'auto';
         }
     }
-    
+
     // Add click event to toggle button
     sidebarToggle.addEventListener('click', toggleSidebar);
     
