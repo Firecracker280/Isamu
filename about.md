@@ -7,9 +7,6 @@ banner_image: /assets/images/about-banner.jpg
 <!-- Custom CSS for just this page -->
 <link rel="stylesheet" href="{{ '/assets/css/about.css' | relative_url }}">
 <main>
-  <section class="banner">
-    <img src="{{ page.banner_image }}" alt="About banner image">
-  </section>
   
   <section class="content">
     <h1>Hello<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="asterisk-link">*</a></h1>
