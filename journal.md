@@ -7,7 +7,7 @@ banner_image: /assets/images/journal-banner.jpg
 
 
 <!-- Custom CSS for just this page -->
-<link rel="stylesheet" href="{{ '/assets/css/writings.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/journal.css' | relative_url }}">
 
 <main>
   <section class="banner">
@@ -16,7 +16,7 @@ banner_image: /assets/images/journal-banner.jpg
   
   <section class="content">
     <h1>Journal Entries</h1>
-    <ul class="articles-list">
+    <ul class="journal-list">
       <li><a href="/articles/minimalist-design-architecture">The Principles of Minimalist Design in Modern Architecture</a></li>
       <li><a href="/articles/form-follows-function">Form Follows Function: A Study in Product Design</a></li>
       <li><a href="/articles/negative-space-ui-design">Negative Space and Visual Hierarchy in UI Design</a></li>
@@ -28,4 +28,4 @@ banner_image: /assets/images/journal-banner.jpg
 </main>
 
 <!-- Custom JavaScript for this page -->
-<script src="{{ '/assets/js/writings.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/journal' | relative_url }}"></script>
