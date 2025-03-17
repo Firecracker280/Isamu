@@ -6,7 +6,7 @@
 source "https://rubygems.org"
 
 # Jekyll version - adjust as needed
-gem "jekyll", "~> 4.2.0"
+gem "jekyll", "~> 3.9.3"
 
 # This is the default theme for new Jekyll sites
 # You can replace this with a different theme or remove it if using custom styling
