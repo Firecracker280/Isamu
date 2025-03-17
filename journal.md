@@ -28,4 +28,4 @@ banner_image: /assets/images/journal-banner.jpg
 </main>
 
 <!-- Custom JavaScript for this page -->
-<script src="{{ '/assets/js/journal' | relative_url }}"></script>
+<script src="{{ '/assets/js/journal.js' | relative_url }}"></script>
