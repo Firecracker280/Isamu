@@ -13,7 +13,7 @@ gem "jekyll", "~> 4.2.0"
 # gem "minima", "~> 2.5"
 
 # If you want to use GitHub Pages, uncomment the line below
-gem "github-pages", group: :jekyll_plugins
+gem "github-pages", "~> 228", group: :jekyll_plugins  
 
 # Jekyll plugins
 group :jekyll_plugins do
