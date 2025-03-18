@@ -41,21 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Pseudo-functionality for image loading
     function loadProfileImage() {
-        /*
-        PSEUDO CODE:
-        1. Create image element
-        2. Set source to the actual profile image path
-        3. When image loads, replace the placeholder
-        
-        Example implementation:
-        const profileImg = new Image();
-        profileImg.src = 'path/to/profile-image.jpg';
-        profileImg.onload = function() {
-            document.querySelector('.image-container').style.backgroundImage = `url(${profileImg.src})`;
-            document.querySelector('.image-container').classList.add('loaded');
-        }
-        */
-        
+       
         // For demonstration - add a class after timeout to simulate image load
         setTimeout(() => {
             const imageContainer = document.querySelector('.image-container');
