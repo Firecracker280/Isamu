@@ -1,333 +1,190 @@
-/* DEFAULT PAGE STYLE */
+/* About Page Specific Styles - Two Column Layout */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Fix for nested main */
+.main-content > main {
+    width: 100%;
+    display: block;
 }
 
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #ffffff;
-    color: #333333;
+/* Banner styling */
+.banner {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Fix image path if needed */
+.banner img[src^="/assets/"] {
+    content: url("/Isamu/assets/images/about-banner.jpg");
+}
+
+/* Content section styling */
+.content {
+    padding: 0 5% 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Create a container for the Hello and image to match the grid layout */
+.hello-container {
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) minmax(300px, 3fr);
+    gap: 25%;
+    margin-bottom: 80px;
+    margin-left: 0;
+    align-items: flex-start;
+}
+
+/* Hello heading styling */
+.content h1 {
+    font-size: 4rem;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 400;
+    color: #333;
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 10px;
+    text-align: left;
+    margin: 0;
+}
+
+.content h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 1px;
+    background-color: #ccc;
+}
+
+/* Image styling - positioned to align with Hello heading */
+.hello-image {
+    width: 100%;
+    position: relative;
+    margin-top: 80px
+}
+
+.hello-image img {
+    width: 100%;
+    height: 400px; /* Specify fixed height as requested */
+    object-fit: cover;
+    display: block;
+}
+
+/* Asterisk link styling */
+.asterisk-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.asterisk-link:hover {
+    color: #999;
+}
+
+/* Section styling for the content below */
+.section {
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) minmax(300px, 3fr);
+    gap: 25%;
+    margin-bottom: 80px;
+    margin-left: 0;
+}
+
+.content h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-family: "Times New Roman", Times, serif;
+    color: #666;
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+/* Paragraph styling */
+.content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    font-family: "Times New Roman", Times, serif;
+    color: #666;
+}
+
+/* Special styling for fancy text */
+.fancy-text {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    font-weight: 300;
+    color: #999;
+    margin-bottom: 20px;
+    font-family: "Times New Roman", Times, serif;
+    font-style: italic;
+}
+
+.fancy-text em {
+    font-style: normal;
+    color: #666;
+}
+
+/* Style for social links */
+.section:nth-of-type(6) p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Style for clients list */
+.section:nth-of-type(7) p {
     line-height: 1.6;
 }
 
-
-/* Portfolio Grid Layout */
-
-/* Portfolio Grid Layout */
-.portfolio-container {
-    width: calc(100% - 80px); /* Subtracts sidebar width */
-    margin-left: 80px; /* Ensures content starts at the right of sidebar */
-    padding: 0;
-    max-width: 100%;
-}
-
-/* Ensuring grid alignment */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-    width: 100%;
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .portfolio-container {
-        width: 100%; /* Full width for smaller screens */
-        margin-left: 0; /* Sidebar likely collapses or moves */
-    }
-}
-
-@media (max-width: 768px) {
-    .portfolio-grid {
-        grid-template-columns: 1fr; /* Single column on smaller screens */
-    }
-    
-    .portfolio-title {
-        font-size: 1.2rem;
-    }
-}
-
-
-/* Portfolio Items */
-.portfolio-item {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 1 / 1;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.portfolio-item.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.portfolio-link {
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    text-decoration: none;
-}
-
-.portfolio-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-}
-
-/* Overlay Effect */
-.portfolio-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.portfolio-title {
-    color: #ffffff;
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    text-align: center;
-    padding: 20px;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-}
-
-/* Hover Effects */
-.portfolio-link:hover .portfolio-overlay {
-    opacity: 1;
-}
-
-.portfolio-link:hover .portfolio-title {
-    transform: translateY(0);
-}
-
-.portfolio-link:hover .portfolio-image {
-    transform: scale(1.05);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  
-    
-    .portfolio-title {
-        font-size: 1.2rem;
-    }
-}
-
-/* SIDEBAR STYLE */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    position: relative;
-    overflow-x: hidden;
-}
-
-/* Vertical Bar - Always Visible */
-.vertical-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 80px; /* Wider vertical bar */
-    height: 100%;
-    background-color: #1a1a1a;
-    z-index: 995;
-}
-
-/* Sidebar Toggle Button */
-.sidebar-toggle {
-    position: absolute;
-    top: 30px;
-    left: 22px; /* Centered in vertical bar */
-    width: 36px; /* Larger icon */
-    height: 30px; /* Larger icon */
-    cursor: pointer;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.toggle-icon {
-    display: block;
-    width: 100%;
-    height: 2px; /* Thinner lines */
-    background-color: #fff;
-    transition: all 0.4s ease;
-}
-
-/* Toggle button animation for open state */
-.sidebar-toggle.active .toggle-icon:nth-child(1) {
-    transform: translateY(14px) rotate(45deg); /* (30px - 2px) ÷ 2 = 14px */
-}
-
-.sidebar-toggle.active .toggle-icon:nth-child(2) {
-    opacity: 0;
-}
-
-.sidebar-toggle.active .toggle-icon:nth-child(3) {
-    transform: translateY(-14px) rotate(-45deg); /* (30px - 2px) ÷ 2 = 14px */
-}
-
-/* Sidebar Styles - Expands from vertical bar */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 80px; /* Start at vertical bar width */
-    width: calc(80vw - 80px); /* 4/5ths of screen minus vertical bar */
-    height: 100%;
-    background-color: #1a1a1a;
-    color: #ffffff;
-    z-index: 990;
-    transform: translateX(-100%); /* Start off-screen */
-    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); /* Slower animation */
-    overflow-y: auto;
-    padding: 80px 40px 40px;
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar.active {
-    transform: translateX(0); /* Slide in */
-}
-
-/* Navigation Links - Horizontal Layout */
-.sidebar-nav {
-    margin-bottom: 100px;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.nav-links li {
-    margin-right: 10px;
+/* Accolades section styling */
+.section:nth-of-type(8) p:first-of-type {
+    font-weight: 500;
     margin-bottom: 15px;
 }
 
-.nav-links li.nav-dot {
-    font-size: 1.2rem;
-    opacity: 0.5;
-}
-
-.nav-links a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.2rem;
-    font-weight: 300;
-    position: relative;
-    display: inline-block;
-    transition: opacity 0.3s ease;
-}
-
-.nav-links a:hover {
-    opacity: 0.7;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: -5px;
-    left: 0;
-    background-color: #ffffff;
-    transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* Centered Feature Text */
-.sidebar-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    padding: 0 20px;
-}
-
-.feature-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    line-height: 1.6;
-    text-align: center;
-    font-weight: 400;
-    max-width: 800px;
-    opacity: 0.9;
-}
-
-/* Content Overlay */
-.content-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 980;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-
-.content-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Main Content Area */
-.main-content {
-    margin-left: 80px; /* Match vertical bar width */
-    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); /* Match sidebar speed */
-}
-
-/* Responsive Adjustments */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    .vertical-bar {
-        width: 60px; /* Slightly narrower on mobile */
+    .hello-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
-    .sidebar-toggle {
-        left: 12px; /* Re-center in narrower bar */
+    .content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
     }
     
-    .sidebar {
-        left: 60px; /* Match vertical bar width */
-        width: calc(90vw - 60px); /* Wider on mobile */
-        padding: 70px 20px 30px;
+    .hello-image img {
+        height: 250px; /* Smaller height for mobile */
     }
     
-    .feature-text {
-        font-size: 1.4rem;
+    .section {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 40px;
     }
     
-    .main-content {
-        margin-left: 60px; /* Match vertical bar width */
+    .content {
+        padding: 0 20px 40px;
+    }
+    
+    .fancy-text {
+        font-size: 1.5rem;
+    }
+}
+
+/* Larger screen adjustments */
+@media (min-width: 769px) {
+    .content {
+        padding: 0 7% 80px;
     }
 }
