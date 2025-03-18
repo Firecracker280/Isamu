@@ -9,7 +9,7 @@ banner_image: /assets/images/about-banner.jpg
 <main>
   <section class="content">
     <div class="hello-container">
-      <h1>Résumé<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="asterisk-link">*</a></h1>
+      <h1><a href="https://drive.google.com/file/d/1A4eQo9nrdfElxbY8flQ2Bahvg2qbZPDe/view?usp=sharing">Résumé<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="asterisk-link">*</a></h1>
       <div class="hello-image">
         <img src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" alt="Profile image">
       </div>
