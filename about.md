@@ -12,8 +12,10 @@ banner_image: /assets/images/about-banner.jpg
     <section class="about-content">
         <div class="about-hello-container">
             <h1>
-                <a href="https://drive.google.com/file/d/1A4eQo9nrdfElxbY8flQ2Bahvg2qbZPDe/view?usp=sharing">Résumé</a>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="about-asterisk-link">*</a>
+            <h1>
+    <a href="https://drive.google.com/file/d/1A4eQo9nrdfElxbY8flQ2Bahvg2qbZPDe/view?usp=sharing" target="_blank" rel="noopener noreferrer">Résumé</a>
+    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="about-asterisk-link" target="_blank" rel="noopener noreferrer">*</a>
+</h1>
             </h1>
             <div class="about-hello-image">
                 <img src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&amp;q=60&amp;w=3000&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D" alt="Profile image" />
