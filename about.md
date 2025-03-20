@@ -14,7 +14,7 @@ banner_image: /assets/images/about-banner.jpg
             <h1>
             <h1>
     <a href="https://drive.google.com/file/d/1A4eQo9nrdfElxbY8flQ2Bahvg2qbZPDe/view?usp=sharing" target="_blank" rel="noopener noreferrer">Résumé</a>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="about-asterisk-link" target="_blank" rel="noopener noreferrer">*</a>
+    <a href="https://www.youtube.com/watch?v=MtLHwqbE1eI" class="about-asterisk-link" target="_blank" rel="noopener noreferrer">*</a>
 </h1>
             </h1>
             <div class="about-hello-image">
