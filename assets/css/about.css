@@ -90,6 +90,17 @@
     color: #999;
 }
 
+/* Resume link styling */
+.resume-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.resume-link:hover {
+    color: #999;
+}
+
 /* Section styling for the content below */
 .about-section {
     display: grid;
