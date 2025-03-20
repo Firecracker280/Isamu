@@ -188,3 +188,22 @@
         padding: 0 7% 80px;
     }
 }
+
+
+/* Style for Resume link */
+.about-content h1 a:not(.about-asterisk-link) {
+    font-size: 2.5rem; /* Making the Resume text smaller */
+    text-decoration: none; /* Removing the underline */
+    color: inherit; /* Use the same color as parent element */
+    transition: color 0.3s ease;
+}
+
+/* Style for Resume link when visited */
+.about-content h1 a:not(.about-asterisk-link):visited {
+    color: inherit; /* Prevents turning purple after clicking */
+}
+
+/* Style for Resume link on hover */
+.about-content h1 a:not(.about-asterisk-link):hover {
+    color: #999; /* Same hover effect as asterisk */
+}
