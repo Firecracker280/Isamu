@@ -189,13 +189,13 @@
     }
 }
 
-
-/* Style for Resume link */
+/* Style for Resume link - appearance only */
 .about-content h1 a:not(.about-asterisk-link) {
     font-size: 2.5rem; /* Making the Resume text smaller */
     text-decoration: none; /* Removing the underline */
     color: inherit; /* Use the same color as parent element */
     transition: color 0.3s ease;
+    /* No positioning properties here */
 }
 
 /* Style for Resume link when visited */
