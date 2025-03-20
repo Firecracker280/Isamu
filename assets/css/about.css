@@ -157,26 +157,26 @@
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .about-content h1 {
         font-size: 2.5rem;
         margin-bottom: 20px;
     }
-    
+
     .about-hello-image img {
         height: 250px; /* Smaller height for mobile */
     }
-    
+
     .about-section {
         grid-template-columns: 1fr;
         gap: 10px;
         margin-bottom: 40px;
     }
-    
+
     .about-content {
         padding: 0 20px 40px;
     }
-    
+
     .about-fancy-text {
         font-size: 1.5rem;
     }
@@ -187,23 +187,4 @@
     .about-content {
         padding: 0 7% 80px;
     }
-}
-
-/* Style for Resume link - appearance only */
-.about-content h1 a:not(.about-asterisk-link) {
-    font-size: 2.5rem; /* Making the Resume text smaller */
-    text-decoration: none; /* Removing the underline */
-    color: inherit; /* Use the same color as parent element */
-    transition: color 0.3s ease;
-    /* No positioning properties here */
-}
-
-/* Style for Resume link when visited */
-.about-content h1 a:not(.about-asterisk-link):visited {
-    color: inherit; /* Prevents turning purple after clicking */
-}
-
-/* Style for Resume link on hover */
-.about-content h1 a:not(.about-asterisk-link):hover {
-    color: #999; /* Same hover effect as asterisk */
 }
