@@ -5,11 +5,6 @@ permalink: /about/
 banner_image: /assets/images/about-banner.jpg
 ---
 
-<!-- Custom CSS for just this page -->
-<link rel="stylesheet" href="{{ '/assets/css/about.css' | relative_url }}">
-
-  <!-- Main Content -->
-    <main class="main-content">
         <!-- Custom CSS for just this page -->
 <link rel="stylesheet" href="/Isamu/assets/css/about.css" />
 
