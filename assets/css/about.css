@@ -7,25 +7,25 @@
 }
 
 /* Banner styling */
-.banner {
+.about-banner {
     width: 100%;
     overflow: hidden;
     margin-bottom: 30px;
 }
 
-.banner img {
+.about-banner img {
     width: 100%;
     height: auto;
     display: block;
 }
 
 /* Fix image path if needed */
-.banner img[src^="/assets/"] {
+.about-banner img[src^="/assets/"] {
     content: url("/Isamu/assets/images/about-banner.jpg");
 }
 
 /* Content section styling */
-.content {
+.about-content {
     padding: 0 5% 60px;
     max-width: 1200px;
     margin: 0 auto;
@@ -33,7 +33,7 @@
 }
 
 /* Create a container for the Hello and image to match the grid layout */
-.hello-container {
+.about-hello-container {
     display: grid;
     grid-template-columns: minmax(150px, 1fr) minmax(300px, 3fr);
     gap: 25%;
@@ -43,7 +43,7 @@
 }
 
 /* Hello heading styling */
-.content h1 {
+.about-content h1 {
     font-size: 4rem;
     font-family: "Times New Roman", Times, serif;
     font-weight: 400;
@@ -55,7 +55,7 @@
     margin: 0;
 }
 
-.content h1::after {
+.about-content h1::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -66,13 +66,13 @@
 }
 
 /* Image styling - positioned to align with Hello heading */
-.hello-image {
+.about-hello-image {
     width: 100%;
     position: relative;
     margin-top: 80px
 }
 
-.hello-image img {
+.about-hello-image img {
     width: 100%;
     height: 400px; /* Specify fixed height as requested */
     object-fit: cover;
@@ -80,18 +80,18 @@
 }
 
 /* Asterisk link styling */
-.asterisk-link {
+.about-asterisk-link {
     color: inherit;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.asterisk-link:hover {
+.about-asterisk-link:hover {
     color: #999;
 }
 
 /* Section styling for the content below */
-.section {
+.about-section {
     display: grid;
     grid-template-columns: minmax(150px, 1fr) minmax(300px, 3fr);
     gap: 25%;
@@ -99,7 +99,7 @@
     margin-left: 0;
 }
 
-.content h2 {
+.about-content h2 {
     font-size: 1.4rem;
     font-weight: 400;
     font-family: "Times New Roman", Times, serif;
@@ -109,7 +109,7 @@
 }
 
 /* Paragraph styling */
-.content p {
+.about-content p {
     font-size: 1.1rem;
     line-height: 1.8;
     margin-bottom: 10px;
@@ -118,7 +118,7 @@
 }
 
 /* Special styling for fancy text */
-.fancy-text {
+.about-fancy-text {
     font-size: 1.8rem;
     line-height: 1.4;
     font-weight: 300;
@@ -128,63 +128,63 @@
     font-style: italic;
 }
 
-.fancy-text em {
+.about-fancy-text em {
     font-style: normal;
     color: #666;
 }
 
 /* Style for social links */
-.section:nth-of-type(6) p {
+.about-section:nth-of-type(6) p {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 /* Style for clients list */
-.section:nth-of-type(7) p {
+.about-section:nth-of-type(7) p {
     line-height: 1.6;
 }
 
 /* Accolades section styling */
-.section:nth-of-type(8) p:first-of-type {
+.about-section:nth-of-type(8) p:first-of-type {
     font-weight: 500;
     margin-bottom: 15px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .hello-container {
+    .about-hello-container {
         grid-template-columns: 1fr;
         gap: 20px;
     }
     
-    .content h1 {
+    .about-content h1 {
         font-size: 2.5rem;
         margin-bottom: 20px;
     }
     
-    .hello-image img {
+    .about-hello-image img {
         height: 250px; /* Smaller height for mobile */
     }
     
-    .section {
+    .about-section {
         grid-template-columns: 1fr;
         gap: 10px;
         margin-bottom: 40px;
     }
     
-    .content {
+    .about-content {
         padding: 0 20px 40px;
     }
     
-    .fancy-text {
+    .about-fancy-text {
         font-size: 1.5rem;
     }
 }
 
 /* Larger screen adjustments */
 @media (min-width: 769px) {
-    .content {
+    .about-content {
         padding: 0 7% 80px;
     }
 }
